@@ -1,0 +1,2 @@
+[run]
+omit = test/*,migrations/*,tmv/test/*,tmv/migrations/*

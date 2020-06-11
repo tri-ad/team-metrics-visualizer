@@ -1,0 +1,12 @@
+README.md
+spinup/*
+**/.DS_Store
+**/*.pyc
+**/__pycache__
+temp/*
+.dockerignore
+**/node_modules
+
+# excluding build files except non-build __init__.py
+./tmv_dash_components/tmv_dash_components/*
+!./tmv_dash_components/tmv_dash_components/__init__.py

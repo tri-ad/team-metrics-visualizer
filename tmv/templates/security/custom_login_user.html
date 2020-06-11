@@ -1,0 +1,38 @@
+{% extends "security/index.html" %}
+{% from "security/_macros.html" import render_field_with_errors, render_field, render_field_errors %}
+
+{% block title %}Login{% endblock %}
+
+{% block form_content %}
+<div class="d-flex justify-content-center mt-5">
+  <div class="col-sm-10 col-md-6 col-lg-4">
+    {% include "security/_messages.html" %}
+
+    <h2 class="text-center">Log in to your account</h2>
+    {% if config['SECURITY_REGISTERABLE'] %}
+    <p class="text-center auth-text">
+      Or <a href="/register?next=/dash/">create a new account</a>
+    </p>
+    {% endif %}
+    <div class="chart-card auth-card">
+      <form action="{{ url_for_security('login') }}" method="POST" name="login_form" class="form">
+        {{ login_user_form.hidden_tag() }}
+        {{ render_field_with_errors(login_user_form.email) }}
+        {{ render_field_with_errors(login_user_form.password) }}
+        <div class="form-group">
+          <div class="checkbox">
+            <label>
+              {{ login_user_form.remember }} {{ login_user_form.remember.label }}
+            </label>
+          </div>
+          {{ render_field_errors(login_user_form.csrf_token) }}
+          {{ login_user_form.submit(class='btn btn-primary btn-block') }}
+        </div>
+      </form>
+      <div>
+        {% include "security/oauth_links.html" %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

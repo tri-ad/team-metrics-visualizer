@@ -1,0 +1,12 @@
+{% extends 'admin/master.html' %}
+{% block title %}Confirm changes{% endblock %}
+
+{% block body %}
+<h1>Confirm changes for {{ connector }} data import</h1>
+
+<pre>
+    {{ status }}
+</pre>
+
+<a class="btn btn-primary" href="{{ confirm_url }}">Confirm changes</a>
+{% endblock %}

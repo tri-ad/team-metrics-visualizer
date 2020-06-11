@@ -1,0 +1,68 @@
+@import "../../../../tmv/style/vendors/style_colors.scss";
+
+$option-height: 40px;
+$options-max-height: $option-height * 6.5;
+
+.popoverBody {
+  color: $gray-700;
+  background-color: #fff;
+  margin: 0 1rem 0rem 1rem;
+}
+
+.popoverTitle {
+  color: #1a202c;
+
+  height: 56px;
+  display: flex;
+  align-items: center;
+}
+
+.popoverTitle * {
+  margin: 0;
+}
+
+.searchBlock {
+  padding: 8px 0 8px 0;
+}
+
+.allOptionsBlock {
+  height: 48px;
+  display: flex;
+  align-items: center;
+}
+
+.options {
+  color: $gray-700;
+
+  max-height: $options-max-height;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.optionsLabel {
+  padding: 0 1rem;
+
+  display: block;
+  margin-bottom: 4px;
+}
+
+.option {
+  padding: 0 1rem;
+
+  cursor: pointer;
+  height: $option-height;
+  display: flex;
+  align-items: center;
+}
+
+.option:hover {
+  background-color: $gray-100;
+}
+
+.optionCheckbox {
+  margin-right: 16px;
+}
+
+.optionCheckbox * {
+  display: block !important;  /* to match parent size to child size */
+}

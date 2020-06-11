@@ -1,0 +1,25 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v2.5.0
+    hooks:
+      - id: check-yaml
+      - id: trailing-whitespace
+        types: [python]
+
+  - repo: local
+    hooks:
+    - id: black
+      name: black
+      entry: pipenv run black
+      language: python
+      language_version: python3
+      require_serial: true
+      types: [python]
+      files: '^tmv/'
+    - id: pylint
+      name: pylint
+      entry: pipenv run pylint
+      language: python
+      language_version: python3
+      types: [python]
+      files: '^tmv/'

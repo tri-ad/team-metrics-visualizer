@@ -1,0 +1,7 @@
+{% extends 'admin/model/list.html' %}
+
+{% block model_menu_bar_before_filters %}
+  <li class="dropdown">
+    <a href="{{ get_url('.bulk_create_view', url=return_url) }}">Bulk Create</a>
+  </li>
+{% endblock %}

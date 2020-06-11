@@ -1,0 +1,48 @@
+{% extends 'admin/master.html' %}
+
+{% block body %}
+  {% block navlinks %}
+    <ul class="nav nav-tabs">
+      <li>
+        <a href="{{ return_url }}">{{ _gettext('List') }}</a>
+      </li>
+      <li class="active">
+        <a href="javascript:void(0)">Bulk Create</a>
+      </li>
+    </ul>
+  {% endblock %}
+
+  <form class="admin-form form-horizontal" action="" method="POST" role="form" enctype="multipart/form-data">
+    <input name="form_step" value="2" hidden>
+    <div class="form-group">
+      <table class="table">
+        <thead>
+          <tr>
+            <th class="col-md-6">Question</th>
+            <th class="col-md-2">Result Red</th>
+            <th class="col-md-2">Result Yellow</th>
+            <th class="col-md-2">Result Green</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for q in q_list %}
+          <tr>
+            <input name="q_{{ loop.index }}" type="text" value="{{ q.question_id }}" hidden>
+            <td title="green: {{ q.answer_green }}&#013;red: {{ q.answer_red }}">{{ q.topic }}</td>
+            <td><input name="red_{{ loop.index }}" type="number" value="0" min="0" required></td>
+            <td><input name="yellow_{{ loop.index }}" type="number" value="0" min="0" required></td>
+            <td><input name="green_{{ loop.index }}" type="number" value="0" min="0" required></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  <hr>
+  <div class="form-group">
+    <div class="col-md-offset-2 col-md-10 submit-row">
+      <input type="submit" class="btn btn-primary" value="Save">
+      <a href="/admin/thcmeasurement/" class="btn btn-danger" role="button">Cancel</a>
+    </div>
+  </div>
+  </form>
+{% endblock %}

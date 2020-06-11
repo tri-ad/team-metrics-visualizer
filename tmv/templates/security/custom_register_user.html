@@ -1,0 +1,32 @@
+{% extends "security/index.html" %}
+{% from "security/_macros.html" import render_field_with_errors, render_field %}
+
+{% block title %}Register{% endblock %}
+
+{% block form_content %}
+<div class="d-flex justify-content-center mt-5">
+  <div class="col-sm-10 col-md-6 col-lg-4">
+    <h2 class="text-center">Create a new account</h2>
+    <p class="text-center auth-text">
+      Already have an account? <a href="/login?next=/dash/">Log in</a>
+    </p>
+    <div class="chart-card auth-card">
+      <form action="{{ url_for_security('register') }}" method="POST" name="register_form" class="form">
+        {{ register_user_form.hidden_tag() }}
+        {{ render_field_with_errors(register_user_form.email) }}
+        {{ render_field_with_errors(register_user_form.password) }}
+
+        {% if register_user_form.password_confirm %}
+          {{ render_field_with_errors(register_user_form.password_confirm) }}
+        {% endif %}
+        <div class="form-group">
+          {{ register_user_form.submit(class='btn btn-primary btn-block') }}
+        </div>
+      </form>
+      <div>
+        {% include "security/oauth_links.html" %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

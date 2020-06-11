@@ -1,0 +1,15 @@
+{% extends 'admin/model/list.html' %}
+
+{% block model_menu_bar_before_filters %}
+  <li class="dropdown">
+    <a href="{{ get_url('.load_jira_mappings', url=return_url) }}">Load mapping from JIRA</a>
+  </li>
+{% endblock %}
+
+
+{% block body %}
+  <h1>Status to Status Category Mapping</h1>
+  <br />
+
+  {{ super() }}
+{% endblock %}

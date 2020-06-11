@@ -1,0 +1,78 @@
+.table {
+  min-width: 100%;
+  white-space: nowrap;
+
+  color: #1a202c;
+  background-color: #ffffff;
+  font-size: 14px;
+
+  thead {
+    color: #4d4d4d;
+    font-weight: 500;
+    line-height: 1.43;
+    letter-spacing: 0.8px;
+  }
+
+  thead tr th, tbody tr td {
+    height: 56px;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  thead tr th {
+    background-color: #fafafa;
+    border-bottom: 1px solid #e5e5e5;
+  }
+
+  tbody tr td {
+    border-bottom: 1px solid #f5f5f5;
+  }
+}
+
+.cell {
+  position: relative;
+  background-clip: padding-box;
+}
+
+.cellInfoIcon {
+  cursor: help;
+
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+
+  div {
+    font-size: 16px !important;
+  }
+}
+
+.cellTrendIcon {
+  cursor: help;
+
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+
+  line-height: 1;
+
+  top: 0;
+  left: 0;
+  margin-left: 12px;
+  margin-top: 16px;
+  background-color: rgba( #000000, 0.07);
+
+  display: flex;
+
+  div {
+    margin: auto;
+  }
+
+  span {
+    font-size: 16px !important;
+  }
+}
+
+.arrowDown {
+  transform: scaleY(-1);
+}

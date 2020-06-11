@@ -1,0 +1,23 @@
+{% import 'admin/lib.html' as lib with context %}
+
+{% macro render_form_custom_submit(form, cancel_url, extra=None, form_opts=None, action=None, is_modal=False, submit_name="Save") -%}
+  {% call lib.form_tag(action=action) %}
+    {{ lib.render_form_fields(form, form_opts=form_opts) }}
+    {{ render_form_buttons(cancel_url, submit_name, extra, is_modal) }}
+  {% endcall %}
+{% endmacro %}
+
+{% macro render_form_buttons(cancel_url, submit_name, extra=None, is_modal=False) %}
+<hr>
+<div class="form-group">
+  <div class="col-md-offset-2 col-md-10 submit-row">
+    <input type="submit" class="btn btn-primary" value="{{ submit_name }}" />
+    {% if extra %}
+    {{ extra }}
+    {% endif %}
+    {% if cancel_url %}
+    <a href="{{ cancel_url }}" class="btn btn-danger" role="button" {% if is_modal %}data-dismiss="modal"{% endif %}>{{ _gettext('Cancel') }}</a>
+    {% endif %}
+  </div>
+</div>
+{% endmacro %}

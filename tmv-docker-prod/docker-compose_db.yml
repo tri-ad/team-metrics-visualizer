@@ -1,0 +1,24 @@
+version: "3"
+
+services:
+  db:
+    image: postgres:11-alpine
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    networks:
+      - docker_network
+    volumes:
+      - db:/var/lib/postgresql/data
+
+  tmv:
+    depends_on:
+      - db
+
+  tmv_celery:
+    depends_on:
+      - db
+
+volumes:
+  db:

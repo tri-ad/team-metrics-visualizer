@@ -1,0 +1,4 @@
+Trust & Safety	I feel safe to be myself and to share my thoughts. We don't hesitate to engage in constructive conflicts.	Mistakes and failures are not accepted. I don't feel safe to speak up in meetings. We avoid constructive conflicts.
+Dependability	I can depend on my team members. We follow through on commitments, and we hold each other accountable for our actions.	I don't trust my team members to do what they say they will do, or live up to things we've agreed upon.
+Purpose	I understand how our team contributes to the organisation, and our mission inspires me.	Our team's purpose is vague or unclear. We have no long-term focus.
+Delivering Value	I'm proud of the value we deliver to our users and stakeholders. We measure our impact, and learn from it.	I feel ashamed of the crap we deliver. Our stakeholders hate us.

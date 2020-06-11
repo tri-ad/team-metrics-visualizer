@@ -1,0 +1,27 @@
+version: "3"
+
+services:
+  db:
+    image: postgres:11-alpine
+    env_file:
+      ../tmv/.env
+    ports:
+      - 37432:5432
+    volumes:
+      - db:/var/lib/postgresql/data
+
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    env_file:
+      ../tmv/.env
+    ports:
+      - 37672:5672
+      - 31672:15672
+    volumes:
+      - rabbitmq:/etc/rabbitmq/
+      - rabbitmq:/var/lib/rabbitmq/
+      - rabbitmq:/var/log/rabbitmq/
+
+volumes:
+  db:
+  rabbitmq:

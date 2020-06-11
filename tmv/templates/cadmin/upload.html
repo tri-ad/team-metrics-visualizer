@@ -1,0 +1,39 @@
+{% extends 'admin/master.html' %}
+{% block title %}Upload: {{ connector }}{% endblock %}
+
+{% block body %}
+<h1>Upload files for {{ connector }}</h1>
+<p class="lead">Choose a file below to upload it. Don't worry, you can review what gets changed before confirming the change.</p>
+<p><a href="{{ get_url('.download_sample') }}">Download sample overtime data</a></p>
+
+<div class="alert alert-info">
+    <h4 class="alert-heading">File Format Specifications</h4>
+    <ul>
+        <li>File format: <code>.xlsx</code> or <code>.xls</code></li>
+        <li>Sheet Names: Year and month in <code>YYMM</code> format meaning each sheet corresponds to a specific month and year.</li>
+        <li>Columns:
+            <ul>
+                <li><strong>Code</strong>: <i>Required as first column</i>. Team code uniquely identifying the team. Maps to Team model's code field.</li>
+                <li><strong>Overtime</strong>: Total time of overtime in <code>hours:minutes</code> format for team represented by <code>Code</code>.
+                <li><strong>Fixed Working days</strong>: Number of working days in the month.</li>
+                <li><strong>Actual working days</strong>: Number of actual days worked in the month.</li>
+            </ul>
+        </li>
+    </ul>
+</div>
+<form method=post enctype=multipart/form-data action=".">
+    <div class="input-group">
+        <input type="file" name="file" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">
+        <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
+        <div class="input-group-append">
+            <button class="btn btn-primary" type="submit" id="inputGroupFileAddon04">Upload</button>
+        </div>
+    </div>
+
+</form>
+
+
+{% endblock %}
+
+{% block tail %}
+{% endblock %}

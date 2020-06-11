@@ -1,0 +1,1 @@
+-f docker-compose_base.yml -f docker-compose_db.yml -f docker-compose_rabbitmq.yml

@@ -1,0 +1,21 @@
+[tool.black]
+target-version = ['py38']
+exclude = '''
+
+(
+  /(
+      \.eggs         # exclude a few common directories in the
+    | \.git          # root of the project
+    | \.hg
+    | \.mypy_cache
+    | \.tox
+    | \.venv
+    | _build
+    | buck-out
+    | build
+    | dist
+    | tmv/tmv_dash_components
+    | tmv_dash_components
+  )/
+)
+'''

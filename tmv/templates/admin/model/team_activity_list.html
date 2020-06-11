@@ -1,0 +1,93 @@
+{% extends 'admin/model/list.html' %}
+
+{% block head_css %}
+  {{ super() }}
+
+  <style>
+    .select2-choice {
+      min-width: 200px;
+    }
+  </style>
+{% endblock %}
+
+{% block model_menu_bar_before_filters %}
+  <li class="dropdown">
+    <a href="{{ get_url('.load_projects', url=return_url) }}">Load Jira Projects</a>
+  </li>
+{% endblock %}
+
+{% block body %}
+  <h1>Configure JIRA</h1>
+  <br />
+  <p>Clicking <strong>Sync sprints w/ issues</strong> will start syncing the last 3 months of that project. Don't navigate away until after the syncing process finishes.</p>
+  <p>Clicking <strong>Sync sprints only</strong> will start syncing only the details of the sprints of that project. This is faster than the other option. Data will be loaded on-demand upon selection of sprint in the dashboard charts.</p>
+
+  <br />
+
+  {{ super() }}
+{% endblock %}
+
+{% block list_row_actions %}
+  {{ super() }}
+  <input id="syncProject{{ get_pk_value(row) }}" class="btn btn-info" type="button" data-activity-id="{{ get_pk_value(row) }}" data-url="{{ get_url('.sync_project', id=get_pk_value(row), url=return_url) }}" data-task-status-url="{{ get_url('.task_status', activity_id=get_pk_value(row), url=return_url) }}" value="Sync sprints w/ issues" onclick="start_sync_project(this);" />
+  <div id="progress{{ get_pk_value(row) }}"><div></div></div>
+  <br />
+  <a class="btn btn-info" role="button" href="{{ get_url('.sync_project_sprints_without_issues', id=get_pk_value(row), url=return_url) }}">Sync sprints only</a>
+  <div></div>
+  <br />
+  <a class="btn btn-danger" role="button" href="{{ get_url('.delete_sprints_and_issues', id=get_pk_value(row), url=return_url) }}">Delete sprints and issue data</a>
+{% endblock %}
+
+{% block tail_js %}
+  {{ super() }}
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nanobar/0.2.1/nanobar.min.js"></script>
+  <script type="text/javascript">
+    function start_sync_project(obj) {
+      $(obj).prop('disabled', true);
+
+      // progress bar
+      div = $('<div></div>');
+      var nanobar = new Nanobar({
+          bg: '#44f',
+          target: div[0],
+      });
+      $('#progress' + obj.dataset.activityId).append(div);
+      nanobar.go(20);
+
+      // send ajax POST request to start background job
+      $.ajax({
+          type: 'GET',
+          url: obj.dataset.url,
+          success: function(data, status, request) {
+              status_url = obj.dataset.taskStatusUrl;
+
+              update_progress(status_url, nanobar, $('#progress' + obj.dataset.activityId), obj);
+          },
+          error: function() {
+              alert('Unexpected error');
+          }
+      });
+    }
+    function update_progress(status_url, nanobar, status_div, obj) {
+      // send GET request to status URL
+      $.getJSON(status_url, function(data) {
+        // update UI
+        percent = parseInt(data['current'] * 100 / data['total']);
+        nanobar.go(percent);
+        if (data['state'] == 'SUCCESS' || data['state'] == 'FAILURE') {
+          // show text again
+          $(obj).prop('disabled', false);
+          // to show success message
+          window.location.reload();
+        }
+        else {
+          // rerun in 2 seconds
+          setTimeout(function() {
+            update_progress(status_url, nanobar, status_div, obj);
+          }, 2000);
+        }
+      });
+    }
+  </script>
+{% endblock %}
+

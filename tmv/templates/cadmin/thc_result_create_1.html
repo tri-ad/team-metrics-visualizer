@@ -1,0 +1,31 @@
+{% extends 'admin/master.html' %}
+{% import 'admin/lib.html' as lib with context %}
+{% import 'cadmin/macros.html' as macros with context %}
+{% from 'admin/lib.html' import extra with context %} {# backward compatible #}
+
+{% block head %}
+  {{ super() }}
+  {{ lib.form_css() }}
+{% endblock %}
+
+{% block body %}
+  {% block navlinks %}
+    <ul class="nav nav-tabs">
+      <li>
+        <a href="{{ return_url }}">{{ _gettext('List') }}</a>
+      </li>
+      <li class="active">
+        <a href="javascript:void(0)">Bulk Create</a>
+      </li>
+    </ul>
+  {% endblock %}
+
+  {% block create_form %}
+    {{ macros.render_form_custom_submit(form, return_url, None, form_opts, submit_name="Next") }}
+  {% endblock %}
+{% endblock %}
+
+{% block tail %}
+  {{ super() }}
+  {{ lib.form_js() }}
+{% endblock %}

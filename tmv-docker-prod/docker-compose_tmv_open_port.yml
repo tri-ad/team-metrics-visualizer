@@ -1,0 +1,6 @@
+version: "3"
+
+services:
+  tmv:
+    ports:
+      - ${TMV_OPEN_PORT}:8000

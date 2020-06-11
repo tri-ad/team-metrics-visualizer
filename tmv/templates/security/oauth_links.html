@@ -1,0 +1,10 @@
+{% if config.OKTA_ORG_BASEURL %}
+<div class='auth-alt-block'>
+    <div><div>Or</div></div>
+</div>
+
+<a class="btn btn-oauth btn-block okta-login-btn" href={{ url_for('user.okta_login') }}>
+    <div class='okta-icon'></div>
+    <div>Sign in with Okta</div>
+</a>
+{% endif %}

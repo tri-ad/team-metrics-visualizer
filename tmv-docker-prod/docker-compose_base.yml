@@ -1,0 +1,34 @@
+version: "3"
+
+services:
+  tmv:
+    build:
+      context: ../
+      dockerfile: ./tmv-docker-prod/app/Dockerfile
+    env_file: .env
+    volumes:
+      - ../tmv:/src/tmv
+      - $HOME/.aws:/root/.aws
+    networks:
+      - docker_network
+    expose:
+      - 8000
+    working_dir: /src/tmv
+    command: sh -c "flask db upgrade head && gunicorn --bind 0.0.0.0 gunicorn_app:app"
+
+  tmv_celery:
+    build:
+      context: ../
+      dockerfile: ./tmv-docker-prod/app/Dockerfile
+    env_file: .env
+    volumes:
+      - ../tmv:/src/tmv
+      - $HOME/.aws:/root/.aws
+    networks:
+      - docker_network
+    working_dir: /src/tmv
+    command: celery -A runcelery:celery worker -B --loglevel=info --uid=nobody --gid=nogroup
+
+networks:
+  docker_network:
+    driver: bridge

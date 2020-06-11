@@ -20,14 +20,6 @@ visuals.shared module
     :undoc-members:
     :show-inheritance:
 
-visuals.Burndown module
------------------------
-
-.. automodule:: visuals.Burndown
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
 visuals.Burnup module
 ---------------------
 

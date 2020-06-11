@@ -33,9 +33,11 @@ class DashboardController(ABC):
            from dash.dependencies import Input, Output
 
     After having implemented your subclass, you can include it in the app by
-        adding the following to app.py:
-        1. Create an instance of it: mydash = MyDashboard()
-        2. Add it to the TABS-list: `TABS.append(mydash)`
+    doing the following in app.py:
+
+    1. Create an instance of it: mydash = MyDashboard()
+    2. Add it to the TABS-list: `TABS.append(mydash)`
+
     All dashboards which are in the TABS-list automatically get their callbacks
         registered (in app.py, `register_callbacks()` gets called.)
     """

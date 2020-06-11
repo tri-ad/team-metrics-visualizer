@@ -20,15 +20,6 @@ connectors.jira.jira_sync module
     :undoc-members:
     :show-inheritance:
 
-connectors.jira.jira_update_measurements module
------------------------------------------------
-
-.. automodule:: connectors.jira.jira_update_measurements
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-
 Module contents
 ---------------
 

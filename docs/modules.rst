@@ -1,5 +1,6 @@
-tmv
-===
+Module reference
+================
+.. TODO: We have the module index, so this is probably not needed anymore.
 
 .. toctree::
    :maxdepth: 4

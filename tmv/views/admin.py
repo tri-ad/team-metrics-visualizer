@@ -553,7 +553,7 @@ admin.add_view(
         THCMeasurement,
         db.session,
         category=CATEGORY_LABEL_TEAM_DATA,
-        name="Team Health Check Old",
+        name="Team Health Check",
     )
 )
 

@@ -1,0 +1,90 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:11-alpine
+        env:
+          POSTGRES_DB: tmv_test
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: test
+          POSTGRES_HOST_AUTH_METHOD: trust
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+
+      - name: Set up Node.js 12
+        uses: actions/setup-node@v2-beta
+        with:
+          node-version: "12"
+
+      - name: Cache dependencies
+        id: cache-dependencies
+        uses: actions/cache@v2
+        with:
+          path: "${{ runner.temp }}/.cache/"
+          key: ${{ runner.os }}-pipenv-${{ hashFiles('Pipfile*') }}
+
+      - name: Install dependencies
+        run: |
+          python -V
+          pip install -U pipenv
+          pipenv install --dev --deploy
+        env:
+          PIP_CACHE_DIR: "${{ runner.temp }}/.cache/pip"
+          PIPENV_CACHE_DIR: "${{ runner.temp }}/.cache/pipenv"
+          PIPENV_VENV_IN_PROJECT: 1
+
+      - name: Cache tmv_dash_components
+        id: cache-tmv_dash_components
+        uses: actions/cache@v2
+        with:
+          path: "./tmv_dash_components/tmv_dash_components/"
+          key: ${{ runner.os }}-tmv_dash_components-${{ hashFiles('./tmv_dash_components/**') }}
+
+      - name: Build tmv_dash_components
+        if: steps.cache-tmv_dash_components.outputs.cache-hit != 'true'
+        run: |
+          cd tmv_dash_components
+          npm i
+          npm run build:js
+          pipenv run npm run build:py
+
+      - name: Check vulnerabilities of dependencies
+        run: |
+          pipenv check
+
+      - name: Run pylint
+        run: |
+          pipenv run pylint tmv/
+
+      - name: Run black
+        run: |
+          pipenv run black --check tmv/
+
+      - name: Run all tests
+        run: |
+          pipenv run pytest --cov-config=tmv/.coveragerc --cov=tmv tmv/test/
+        env:
+          TESTING_SQLALCHEMY_DATABASE_URI: postgresql://postgres:test@127.0.0.1:5432/tmv_test

@@ -1,0 +1,75 @@
+.auth-text {
+  font-size: 14px;
+
+  a {
+    text-decoration: underline;
+  }
+}
+
+.auth-card {
+  padding: 40px;
+  font-size: 14px;
+
+  .btn {
+    font-size: 14px;
+  }
+
+  label {
+    font-weight: 500;
+  }
+
+  .checkbox label {
+    font-weight: normal;
+  }
+}
+
+.auth-alt-block {
+  position: relative;
+  height: 1.5em;
+  width: 100%;
+  margin-bottom: 1rem;
+
+  & > div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  & > div > div {
+    color: #999999;
+    width: 3em;
+    height: auto;
+    background-color: #fff;
+    z-index: 100;
+    text-align: center;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    border-top: 1px solid #cccccc;
+    top: 50%;
+    z-index: 50;
+  }
+}
+
+.okta-login-btn {
+  display: flex;
+  justify-content: center;
+
+  .okta-icon {
+    margin-right: 0.8em;
+  }
+}
+
+.okta-icon {
+  position: relative;
+  top: 5px;
+  display: inline-block;
+  border-radius: 50%;
+  width: 1em;
+  height: 1em;
+  border: 0.25em solid #a0cbe7;
+}

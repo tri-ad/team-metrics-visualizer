@@ -20,6 +20,5 @@ test_coverage/
 node_modules/
 celerybeat-schedule*
 docs/_build/
-tmv/style/*
-tmv/static/dash/main.*
+
 tmv/static/dash/favicon.ico

@@ -1,0 +1,104 @@
+.btn-primary {
+  @include button-variant($gray-700, $gray-700, $red-600, $red-600, $gray-700, $red-600);
+  &:focus,
+  &.focus {
+    background-color: $gray-700;
+    box-shadow: 0 0 0 $btn-focus-width rgba(mix(color-yiq($red-600), $red-600, 15%), .5) !important;
+  }
+
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled).active,
+  .show > &.dropdown-toggle {
+    background-color: $gray-700;
+    &:focus {
+      box-shadow: 0 0 0 $btn-focus-width rgba(mix(color-yiq($red-600), $red-600, 15%), .5) !important;
+    }
+  }
+}
+
+.btn-outline-primary {
+  @include button-outline-variant($gray-700, $white, $red-600, $red-600);
+  box-sizing: border-box;
+  border: solid 1px $red-600;
+
+  &:focus,
+  &.focus {
+    color: $gray-700;
+    background-color: $white;
+    border: solid 1px $red-600;
+    box-shadow: 0 0 0 $btn-focus-width rgba(mix(color-yiq($red-600), $red-600, 15%), .5) !important;
+  }
+
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled).active,
+  .show > &.dropdown-toggle {
+    &:focus {
+      color: $gray-700;
+      background-color: $white;
+      border: solid 1px $red-600;
+      box-shadow: 0 0 0 $btn-focus-width rgba(mix(color-yiq($red-600), $red-600, 15%), .5) !important;
+    }
+  }
+}
+
+.btn-outline-secondary {
+  @include button-outline-variant($gray-700, $white, $red-600, $red-600);
+
+  border: solid 1px;
+
+  &:focus,
+  &.focus {
+    color: $gray-700;
+    background-color: $white;
+    border: solid 1px $red-600;
+    box-shadow: 0 0 0 $btn-focus-width rgba(mix(color-yiq($red-600), $red-600, 15%), .5) !important;
+  }
+
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled).active,
+  .show > &.dropdown-toggle {
+    &:focus {
+      color: $gray-700;
+      background-color: $white;
+      border: solid 1px $red-600;
+      box-shadow: 0 0 0 $btn-focus-width rgba(mix(color-yiq($red-600), $red-600, 15%), .5) !important;
+    }
+  }
+}
+
+.btn-link {
+  &:focus,
+  &.focus {
+    border: solid 1px $red-600;
+  }
+  &:not(:disabled):not(.disabled).active,
+  .show > &.dropdown-toggle {
+    &:focus {
+      border: solid 1px $red-600;
+    }
+  }
+}
+
+.btn-dropdown {
+  @include button-variant(#fff, $gray-300);
+  color: $gray-900;
+}
+
+.btn-navbar {
+  @include button-variant($gray-100, $gray-500);
+
+  @include hover() {
+    color: rgba(0, 0, 0, 0.7);
+    background-color: $gray-100;
+  }
+
+  color: $gray-500;
+  font-weight: 500;
+  border-radius: 6px;
+}
+
+.btn-oauth {
+  @include button-variant(#fff, $gray-300);
+  color: $gray-900;
+  font-weight: 500;
+}

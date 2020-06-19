@@ -1,0 +1,24 @@
+.navbar-light {
+  .navbar-nav {
+    .nav-item {
+      margin-right: 32px;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
+    .nav-link {
+      font-weight: 500;
+      padding: 18px 4px;
+    }
+
+    .show > .nav-link,
+    .active > .nav-link,
+    .nav-link.show,
+    .nav-link.active {
+      color: $navbar-light-active-color;
+      border-bottom: 2px solid $gray-700;
+    }
+  }
+}

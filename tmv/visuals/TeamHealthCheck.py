@@ -116,7 +116,7 @@ class THCResultTableController(VisualController, _TeamHealthCheckVisualControlle
                 and_(
                     filter_session,
                     filter_teams,
-                    Team.team_id.in_(current_user.readable_team_ids.subquery()),
+                    Team.team_id.in_(current_user.readable_team_ids),
                 ),
             )
             .statement,

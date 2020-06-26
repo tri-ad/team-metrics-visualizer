@@ -204,12 +204,14 @@ def callback_update_teams_by_department(
         #   = True). If a specific department was selected, build a filter
         #   expression.
         if selected_department == ALL_ITEMS_OPTION_ID:
-            department_filter = True
+            department_filter = Team.team_id.in_(current_user.listable_team_ids)
         else:
-            department_filter = Team.parent_id == selected_department
+            department_filter = Team.team_id.in_(
+                current_user.get_listable_department_team_ids(selected_department)
+            )
 
         teams = (
-            current_user.readable_teams.with_entities(
+            Team.query.with_entities(
                 Team.team_id.label("value"), Team.name.label("label")
             )
             .filter(department_filter)
@@ -308,10 +310,8 @@ def department_picker(
 
     # Query database for a list of all departments
     departments = (
-        current_user.readable_teams.with_entities(
-            Team.team_id.label("value"), Team.name.label("label")
-        )
-        .filter(Team.parent_id == None)
+        Team.query.with_entities(Team.team_id.label("value"), Team.name.label("label"))
+        .filter(Team.team_id.in_(current_user.listable_department_ids))
         .order_by(Team.name)
         .all()
     )
@@ -357,9 +357,8 @@ def team_picker(
     # Controls for filtering by team
     # Query all teams from database
     teams = (
-        current_user.readable_teams.with_entities(
-            Team.team_id.label("value"), Team.name.label("label")
-        )
+        Team.query.with_entities(Team.team_id.label("value"), Team.name.label("label"))
+        .filter(Team.team_id.in_(current_user.listable_team_ids))
         .order_by(Team.name)
         .all()
     )

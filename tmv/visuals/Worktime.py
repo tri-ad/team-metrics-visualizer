@@ -33,9 +33,7 @@ class OvertimeChartController(VisualController):
         """ Return latest date for which data is available """
         result = (
             db.session.query(OTMeasurement.measurement_date)
-            .filter(
-                OTMeasurement.team_id.in_(current_user.readable_team_ids.subquery()),
-            )
+            .filter(OTMeasurement.team_id.in_(current_user.readable_team_ids))
             .order_by(desc(OTMeasurement.measurement_date))
             .limit(1)
             .first()
@@ -49,9 +47,7 @@ class OvertimeChartController(VisualController):
         """ Return earliest date for which data is available """
         result = (
             db.session.query(OTMeasurement.measurement_date)
-            .filter(
-                OTMeasurement.team_id.in_(current_user.readable_team_ids.subquery()),
-            )
+            .filter(OTMeasurement.team_id.in_(current_user.readable_team_ids))
             .order_by(asc(OTMeasurement.measurement_date))
             .limit(1)
             .first()
@@ -126,7 +122,7 @@ class OvertimeChartController(VisualController):
                     OTMeasurement.measurement_date.between(
                         selected_start_date, selected_end_date
                     ),
-                    Team.team_id.in_(current_user.readable_team_ids.subquery()),
+                    Team.team_id.in_(current_user.readable_team_ids),
                 )
             )
         )

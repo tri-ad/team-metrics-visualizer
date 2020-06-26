@@ -1,81 +1,55 @@
 # Team Metrics Visualizer
+![CI-Pipeline status](https://github.com/tri-ad/team-metrics-visualizer/workflows/Continuous%20Integration/badge.svg?branch=master)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Team Metrics Visualizer is a tool to gather data on teams from various sources and visualize the results in dashboards.
+Team Metrics Visualizer is a tool teams can use to gather data from various other tools and create helpful visualisations from it.
 
 ## Getting started
 
 ### Requirements
 
-* Python3
+* Python 3
 * Pipenv
 * Docker
 * npm
 
-Relative paths in this README are to be understood relative to the repository directory.
+### 🖥 Development environment setup
 
-### First setup
+_Note_: All paths given here are relative to the project root.
 
-1. Install python dependencies: `pipenv sync --dev --python=python3`
-1. Install pre-commit hooks. This will run linter on commit: `pipenv run pre-commit install`
-1. Switch to app folder: `cd tmv` (this is the folder containing `app.py`)
-1. Copy sample env file: `cp ../sample.env .env`
-1. Change the values in `.env`
-1. Switch to docker dev folder: `cd ../tmv-docker-dev/`
-1. Start database container: `./run_docker-compose.sh`
-1. Switch to custom dash components folder: `cd ../tmv_dash_components/`
-1. Install dependencies: `npm i`
-1. Build custom components: `pipenv run npm run build`
-1. Switch back to app folder: `cd ../tmv/`
-1. Initialize database: `pipenv run flask db upgrade head`
+After cloning the repo, perform the following steps to create your development environment:
 
-### Run/launch
+1. Install dependencies: ``pipenv sync --dev --python /path/to/your/python3.8``.
+1. Install pre-commit hooks: ``pipenv run pre-commit install``.
+1. Create ``.env``-file in folder ``tmv`` for configuration. You can find a ``sample.env`` with all required configuration variables in the project root.
+1. Switch to folder ``tmv-docker-dev``.
+1. Start database container for local development: ``./run_docker-compose.sh``.
+1. Switch to custom dash components folder ``tmv_dash_components``.
+1. Install dependencies: ``npm i``.
+1. Build custom components: ``pipenv run npm run build``.
+1. Switch back to app folder ``tmv``.
+1. Initialize database: ``pipenv run flask db upgrade head``.
 
-1. Start database container by executing `./run_docker-compose.sh` in folder `tmv-docker-dev`.
-1. Run celery worker: `pipenv run celery -A runcelery:celery worker -B --loglevel=info`.
-1. Start app: `pipenv run flask run`.
+### 🚀 Launch for local development
 
-App is reachable at `http://127.0.0.1:8050/dash/`.
+1. Start database container by executing ``./run_docker-compose.sh`` in folder ``tmv-docker-dev``
+1. Start celery: ``pipenv run celery -A runcelery:celery worker -B --loglevel=info``. If you have trouble with this, check the FAQs in the documentation.
+1. Start app: ``pipenv run flask run``. 
 
-## Migrations
+App is reachable at <http://127.0.0.1:8050/>.
 
-We use [Flask-Migrate](https://flask-migrate.readthedocs.io/en/latest/) to create data migrations that apply data-model changes. Flask-Migrate helps you make sure that the code (the ORM actually) is aligned with the data you have on your DB.
+If this is the first time you run the app, it is recommended to add yourself as superuser:
 
-### You have made changes to the data model
+1. Add a user: ``pipenv run flask users create --active <your e-mail>``.
+1. Add superuser privileges: ``pipenv run flask roles add <your e-mail> superadmin``.
 
-If you make changes to the data model, editing or creating tables or fields, make sure that you create a migration and apply it to the DB. Generated migration files should be checked because not all changes are caught by Flask-Migrate.
+### After pulling a new version
 
-```sh
-# Create the migration file
-flask db migrate -m "Optional migration message. It could be something like ``Added name field``"
-# Apply the migration
-flask db upgrade
-```
+If dependencies were changed (modified `Pipfile`/`Pipfile.lock`), make sure to update
+your Python-environment by running `pipenv sync --dev --python /path/to/your/python3.8`.
 
-### Other useful commands
+Always make sure, that your database has the same revision as the ORM. To do so, run this command to upgrade your database to the newest revision: `pipenv run flask db upgrade head`.
 
-* Show a list of revisions with `flask db history`
-* Revert to previous revision with `flask db downgrade`
-* Show the current DB revision with `flask db current`
-* Add a user: `flask users create --active [email]`
-* Add a role to a user: `flask roles add [email] [role: superadmin, dataprovider]`
+### 👩🏻‍💻 Contribution
 
-## Theming
-
-We use [Dash Bootstrap Components](https://dash-bootstrap-components.opensource.faculty.ai/) for most UI components.
-We use [Bootstrap](https://getbootstrap.com/) with Sass to style them.
-If you want to customize the style, edit the SCSS files at `tmv/style` and generate the CSS:
-
-1. From the main project folder: `npm install` and `npm run build`.
-1. Webpack will generate `main.css` and `main.js` files in `./tmv/static/dash` folder.
-
-## Jira Setup
-
-If Jira is setup and you navigate to the `{server}/admin/activity/` admin page, JiraProjects will be loaded which can be assigned to Activities.
-
-### Status to Status Category Mappings
-
-For the Sprint-related charts to work properly, mappings must be configured. If Jira is setup, `{server}/admin/statuscategorystatusmapping/` has a button to load the default mappings from Jira. The default mappings show Activity as not set in the admin page. To create activity-specific mappings, just create the mappings with Activity set to that specific activity. These will take priority over the default mappings.
-
-During the generation of default mappings, there's a chance that not all statuses will be mapped. A message will be flashed at the top of the page if so. This info is also available at the console logs.
-
-Also, it's possible to override the default mappings by setting the Status Category to something else. These changes will persist even if you load the default values from Jira again. If you want to reset the mappings, delete all the rows with Activity as not set then load the Jira mappings again.
+If you want to contribute to this tool, please have a look at `CONTRIBUTING.md`. 🙂

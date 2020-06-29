@@ -220,7 +220,7 @@ class JiraSync:
             try:
                 sprint_state = Sprint.State(sprint_dict["state"].lower())
             except ValueError as e:
-                logger.error(
+                current_app.logger.error(
                     f"Encountered Sprint with invalid state: {e}. Context: {sprint_dict}"
                 )
             else:
@@ -270,7 +270,7 @@ class JiraSync:
             try:
                 sprint_state = Sprint.State(sprint_dict["state"].lower())
             except ValueError as e:
-                logger.error(f"Encountered Sprint with invalid state: {e}")
+                current_app.logger.error(f"Encountered Sprint with invalid state: {e}")
                 return None
             else:
                 sprint_gh_dict = self._gh_string_to_dict(sprint_gh)

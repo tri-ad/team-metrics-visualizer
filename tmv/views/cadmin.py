@@ -78,7 +78,7 @@ class UploadDataView(BaseView):
         self.connector = kwargs.pop("connector")
 
         if self.connector not in SUPPORTED_CONNECTORS:
-            raise ValueError(f"connector {repr(connector)} is not supported")
+            raise ValueError(f"connector {repr(self.connector)} is not supported")
 
         super().__init__(*args, **kwargs)
 
@@ -99,6 +99,7 @@ class UploadDataView(BaseView):
         """Save the file uploaded for the connector."""
 
         # Try to retrieve the file from the request
+        file = None
         try:
             file = request.files["file"]
         except KeyError as e:

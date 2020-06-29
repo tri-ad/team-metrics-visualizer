@@ -445,9 +445,7 @@ class ConfigureJiraConnectionView(CheckSuperuserRoleMixin, ModelView):
                 session[task_session_key] = result_with_issues.task_id
                 flash("Sprints details synced. Sprint issues started syncing.", "info")
             else:
-                current_app.logger.info(
-                    f"Syncing in progress for Activity {activity_id}"
-                )
+                current_app.logger.info("Syncing in progress...")
         except Exception as e:
             current_app.logger.error(traceback.format_exc())
             current_app.logger.error(f"Sync project error: {e}")

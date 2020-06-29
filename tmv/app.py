@@ -1,5 +1,6 @@
 import logging
 import os
+import sys
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Dict, List, Optional
@@ -28,7 +29,7 @@ DASHBOARD_PREFIX = "/dash/"
 
 if __name__ == "__main__":
     print("Please create .env file and start dev server via `flask run --port 8050`")
-    exit(1)
+    sys.exit(1)
 
 
 @dataclass

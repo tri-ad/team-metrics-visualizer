@@ -61,54 +61,50 @@ confidence=
 # no Warning level messages displayed, use "--disable=all --enable=classes
 # --disable=W".
 disable=fixme,  # ingore TO DOs
-        invalid-name,  # ignore short variable names TODO: check can be redefined
+        invalid-name,                     # ignore short variable names TODO: check can be redefined
         no-self-use,
         unused-argument,
         inconsistent-return-statements,
-        logging-format-interpolation,  # using f-strings
-        bad-whitespace,  # black
-        bad-continuation,  # black
-        line-too-long,  # black
-        too-few-public-methods,  # flask-sqlalchemy models
-        singleton-comparison,  # flask-sqlalchemy filter: Model.field == None
-        R0801,  # Similar lines in 2 files  TODO: maybe fix some
-        no-member,  # TODO: try to fix Instance of 'SQLAlchemy' has no
+        logging-format-interpolation,     # using f-strings
+        bad-whitespace,                   # black
+        bad-continuation,                 # black
+        line-too-long,                    # black
+        too-few-public-methods,           # flask-sqlalchemy models
+        singleton-comparison,             # flask-sqlalchemy filter: Model.field == None
+        R0801,                            # TODO: Callback- & dashboard-related code. Maybe we can abstract this better.
+        no-member,                        # TODO: try to fix Instance of 'SQLAlchemy' has no
         too-many-ancestors,  # fix mixins
         logging-fstring-interpolation,
         
-        ### TODO: not sure:
+        # TODO: Auto-fix?
         wrong-import-order,
+        ungrouped-imports,
+        
+        # TODO: Activate this again, when documentation is more complete.
         missing-docstring,
         missing-module-docstring,
         missing-class-docstring,
         missing-function-docstring,
+
+        # TODO: Should we reactivate this?
         too-many-arguments,
         too-many-return-statements,
         too-many-instance-attributes,
         too-many-branches,
 
-        ### TODO: fix:
-        cyclic-import,
-        no-name-in-module,  # flask-sqlalchemy tests update
-        import-error,  # flask-sqlalchemy tests update
+        ### TODO: Some stuff to fix over time.
+        no-name-in-module,                # flask-sqlalchemy tests update
         unexpected-keyword-arg,
-        pointless-string-statement,  # convert to comments
+        pointless-string-statement,       # convert to comments
         unused-import,
         unnecessary-pass,
-        global-statement,
         no-else-return,
         wrong-import-position,
         wildcard-import,
         logging-not-lazy,
-        super-init-not-called,
-        dangerous-default-value,
         redefined-outer-name,
+        dangerous-default-value,
         attribute-defined-outside-init,
-        unidiomatic-typecheck,
-        expression-not-assigned,
-        undefined-variable,
-        ungrouped-imports,
-        consider-using-sys-exit,
 
         ### TODO: fix / add ignoring to some places:
         arguments-differ,

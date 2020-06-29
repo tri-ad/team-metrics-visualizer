@@ -47,7 +47,7 @@ class TestOvertimeVisual:
             def readable_team_ids(self):
                 return Team.query.with_entities(Team.team_id)
 
-        mocker.patch("visuals.Worktime.current_user", UserMock())
+        mocker.patch("visuals.work_time.current_user", UserMock())
 
         # Check if dates in overtime chart match
         assert ot_visual.get_earliest_date() == min(dates)

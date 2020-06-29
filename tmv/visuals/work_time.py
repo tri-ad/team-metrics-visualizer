@@ -14,7 +14,7 @@ from sqlalchemy import and_, asc, desc, or_
 from database import db
 from structure.measurements import OTMeasurement
 from structure.organization import Team
-from visuals import VisualController
+from visuals.base import VisualController
 from visuals.shared import fix_timedelta_plot
 
 

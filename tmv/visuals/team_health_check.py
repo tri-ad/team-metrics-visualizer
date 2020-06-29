@@ -3,19 +3,19 @@ from collections import namedtuple
 from datetime import datetime, timedelta
 from enum import Enum
 from typing import Dict, List, Optional, Tuple
+import numpy as np
+import pandas as pd
+from database import db
 
+from flask_security import current_user
+from sqlalchemy import and_, desc, func, or_
 import dash_core_components as dcc
 import dash_html_components as dhtml
 import dash_table
-import numpy as np
-import pandas as pd
 import plotly.graph_objects as go
 from dash_bootstrap_components import ButtonGroup, Container, Label
-from flask_security import current_user
-from sqlalchemy import and_, desc, func, or_
 
 import tmv_dash_components as tdc
-from database import db
 from structure.measurements import (
     THCMeasurement,
     THCQuestion,
@@ -24,7 +24,7 @@ from structure.measurements import (
 )
 from structure.organization import Team
 from helpers.color import hex_to_rgb
-from visuals import VisualController
+from visuals.base import VisualController
 
 
 def column_id(team_name: str, session: str) -> str:

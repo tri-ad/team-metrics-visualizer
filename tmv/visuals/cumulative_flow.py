@@ -13,7 +13,7 @@ from connectors.jira.jira_sync import JiraSync
 from database import db
 from structure.events import Sprint, IssueSnapshot, StatusCategory
 from structure.project import Activity
-from visuals import SprintVisualController
+from visuals.base import SprintVisualController
 
 
 class CumulativeFlowGraphController(SprintVisualController):

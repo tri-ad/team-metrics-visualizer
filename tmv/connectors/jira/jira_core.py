@@ -7,7 +7,7 @@ from typing import Dict, List, Optional
 
 from flask import current_app
 
-from auth import auth
+from auth import secrets
 from common.exceptions import MissingConfigurationError
 from jira import JIRA
 
@@ -18,9 +18,9 @@ def __oauth_dict() -> Dict:
 
     :return: OAuth-dictionary for JIRA.
     """
-    access_token = auth.jira_token("jira_access_token")
-    access_token_secret = auth.jira_token("jira_access_sec")
-    rsa_key = auth.jira_rsa_key("jira_rsa_pem")
+    access_token = secrets.jira_token("jira_access_token")
+    access_token_secret = secrets.jira_token("jira_access_sec")
+    rsa_key = secrets.jira_rsa_key("jira_rsa_pem")
 
     if None in (access_token, access_token_secret, rsa_key):
         logging.warning(

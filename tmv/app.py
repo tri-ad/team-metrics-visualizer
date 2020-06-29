@@ -11,7 +11,7 @@ from dotenv import load_dotenv
 from flask_security import Security
 
 from common.dash_callbacks import register_common_callbacks
-from dash_custom_auth import DashFlaskSecurityAuth
+from auth import DashFlaskSecurityAuth
 from dash_layout import init_tabs_for_navbar, layout
 from dashboards.Burnup import BurnupDashboardController
 from dashboards.LongTermHealth import LongTermHealthDashboardController

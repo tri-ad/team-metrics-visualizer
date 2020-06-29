@@ -24,7 +24,7 @@ from structure.measurements import (
     thc_final_result,
 )
 from structure.organization import Team
-from utils.color import hex_to_rgb
+from helpers.color import hex_to_rgb
 from visuals import VisualController, shared, slicers_state
 
 idx = pd.IndexSlice

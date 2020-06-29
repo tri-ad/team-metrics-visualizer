@@ -13,7 +13,7 @@ from sqlalchemy.orm import column_property
 
 from database import db
 
-from .organization import Team
+from structure.organization import Team
 
 
 class RolesUser(db.Model):

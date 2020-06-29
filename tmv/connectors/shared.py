@@ -137,7 +137,7 @@ class FileImporter(ABC):
             self._data = {"0": pd.DataFrame()}
             self._only_one_sheet = True
         else:
-            if type(data) is pd.DataFrame:
+            if isinstance(data, pd.DataFrame):
                 self._data = {"0": data}
                 self._only_one_sheet = True
             else:
@@ -271,7 +271,7 @@ class FileImporter(ABC):
         # Show list of objects
         for t, o in zip(titles, objects):
             messages.append(t)
-            [messages.append(x.__repr__()) for x in o]
+            _ = [messages.append(x.__repr__()) for x in o]
 
         # Return status or print it to the console
         if silent:

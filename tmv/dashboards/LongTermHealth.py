@@ -4,9 +4,8 @@ from datetime import timedelta, datetime
 import dash_html_components as dhtml
 from dash.dependencies import Input, Output
 from dashboards.base import DashboardController
-from visuals import shared
 from visuals import THCResultTableController, OvertimeChartController
-from visuals import TeamHealthCheck
+import slicers
 
 
 class LongTermHealthDashboardController(DashboardController):
@@ -37,11 +36,11 @@ class LongTermHealthDashboardController(DashboardController):
 
         return self.standard_grid_layout(
             controls=[
-                *shared.department_and_team_picker(
+                *slicers.org.department_and_team_picker(
                     department_picker_id=self.DEPARTMENT_PICKER_ID,
                     team_picker_id=self.TEAM_PICKER_ID,
                 ),
-                *shared.date_range_picker(
+                *slicers.dates.date_range_picker(
                     html_element_id=self.DATE_RANGE_PICKER_ID,
                     display_format="YYYY/MM/DD",
                     display_format_month="MMM YYYY",
@@ -51,7 +50,7 @@ class LongTermHealthDashboardController(DashboardController):
                     end_date=ot_latest_date,
                 ),
                 dhtml.Br(),
-                *TeamHealthCheck.thc_session_picker(
+                *slicers.thc.thc_session_picker(
                     default_session,
                     default_compare,
                     html_element_ids=(
@@ -64,20 +63,24 @@ class LongTermHealthDashboardController(DashboardController):
         )
 
     def register_callbacks(self, app):
-        shared.callback_department_picker_state_saving(app, self.DEPARTMENT_PICKER_ID)
-        shared.callback_team_picker_state_saving(app, self.TEAM_PICKER_ID)
-        TeamHealthCheck.callback_thc_session_picker_state_saving(
+        slicers.org.callback_department_picker_state_saving(
+            app, self.DEPARTMENT_PICKER_ID
+        )
+        slicers.org.callback_team_picker_state_saving(app, self.TEAM_PICKER_ID)
+        slicers.thc.callback_thc_session_picker_state_saving(
             app, self.THC_SESSION_PICKER_ID, self.THC_SESSION_PICKER_COMPARE_ID
         )
-        shared.callback_date_range_picker_state_saving(app, self.DATE_RANGE_PICKER_ID)
+        slicers.dates.callback_date_range_picker_state_saving(
+            app, self.DATE_RANGE_PICKER_ID
+        )
 
-        shared.callback_update_teams_by_department(
+        slicers.org.callback_update_teams_by_department(
             app=app,
             department_picker_id=self.DEPARTMENT_PICKER_ID,
             team_picker_id=self.TEAM_PICKER_ID,
         )
 
-        TeamHealthCheck.callback_update_thc_visuals_by_teams_and_sessions(
+        slicers.thc.callback_update_thc_visuals_by_teams_and_sessions(
             app=app,
             team_picker_id=self.TEAM_PICKER_ID,
             session_picker_id=self.THC_SESSION_PICKER_ID,

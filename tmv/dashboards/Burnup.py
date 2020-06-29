@@ -7,7 +7,7 @@ import dash_html_components as dhtml
 
 from dashboards import DashboardController
 from visuals import BurnupGraphController
-from visuals import shared
+import slicers
 
 
 class BurnupDashboardController(DashboardController):
@@ -24,7 +24,7 @@ class BurnupDashboardController(DashboardController):
     def dashboard(self):
         return self.standard_layout(
             controls=[
-                *shared.team_and_sprint_picker(
+                *slicers.org.team_and_sprint_picker(
                     team_picker_id=self.TEAM_PICKER_ID,
                     sprint_picker_id=self.SPRINT_PICKER_ID,
                 )
@@ -39,10 +39,10 @@ class BurnupDashboardController(DashboardController):
         )
 
     def register_callbacks(self, app):
-        shared.callback_team_picker_state_saving(app, self.TEAM_PICKER_ID)
-        shared.callback_sprint_picker_state_saving(app, self.SPRINT_PICKER_ID)
+        slicers.org.callback_team_picker_state_saving(app, self.TEAM_PICKER_ID)
+        slicers.org.callback_sprint_picker_state_saving(app, self.SPRINT_PICKER_ID)
 
-        shared.callback_update_sprints_by_team(
+        slicers.org.callback_update_sprints_by_team(
             app=app,
             team_picker_id=self.TEAM_PICKER_ID,
             sprint_picker_id=self.SPRINT_PICKER_ID,

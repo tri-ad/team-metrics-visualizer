@@ -1,8 +1,8 @@
 from typing import List, Optional
 from dashboards import DashboardController
-from visuals import shared
-from visuals import TeamHealthCheck
 from visuals import THCResultTableController, THCTrendGraphController
+from slicers import thc
+import slicers
 import dash_html_components as dhtml
 from dash.dependencies import Input, Output
 
@@ -29,12 +29,12 @@ class TeamHealthCheckDashboardController(DashboardController):
 
         return self.standard_layout(
             controls=[
-                *shared.department_and_team_picker(
+                *slicers.org.department_and_team_picker(
                     selected_teams=teams,
                     department_picker_id=self.DEPARTMENT_PICKER_ID,
                     team_picker_id=self.TEAM_PICKER_ID,
                 ),
-                *TeamHealthCheck.thc_session_picker(
+                *slicers.thc.thc_session_picker(
                     session1,
                     session2,
                     html_element_ids=(
@@ -47,19 +47,21 @@ class TeamHealthCheckDashboardController(DashboardController):
         )
 
     def register_callbacks(self, app):
-        shared.callback_department_picker_state_saving(app, self.DEPARTMENT_PICKER_ID)
-        shared.callback_team_picker_state_saving(app, self.TEAM_PICKER_ID)
-        TeamHealthCheck.callback_thc_session_picker_state_saving(
+        slicers.org.callback_department_picker_state_saving(
+            app, self.DEPARTMENT_PICKER_ID
+        )
+        slicers.org.callback_team_picker_state_saving(app, self.TEAM_PICKER_ID)
+        slicers.thc.callback_thc_session_picker_state_saving(
             app, self.THC_SESSION_PICKER_ID, self.THC_SESSION_PICKER_COMPARE_ID
         )
 
-        shared.callback_update_teams_by_department(
+        slicers.org.callback_update_teams_by_department(
             app=app,
             department_picker_id=self.DEPARTMENT_PICKER_ID,
             team_picker_id=self.TEAM_PICKER_ID,
         )
 
-        TeamHealthCheck.callback_update_thc_visuals_by_teams_and_sessions(
+        slicers.thc.callback_update_thc_visuals_by_teams_and_sessions(
             app=app,
             team_picker_id=self.TEAM_PICKER_ID,
             session_picker_id=self.THC_SESSION_PICKER_ID,

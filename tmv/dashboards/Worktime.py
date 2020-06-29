@@ -2,12 +2,12 @@ import logging
 from typing import List
 from datetime import datetime, timedelta
 import pandas as pd
+from structure.organization import Team
 from dash_html_components import Div, Hr
 from dash.dependencies import Input, Output
 from dashboards import DashboardController
-from visuals import shared
 from visuals import OvertimeChartController
-from structure.organization import Team
+import slicers
 
 
 class WorktimeDashboardController(DashboardController):
@@ -32,11 +32,11 @@ class WorktimeDashboardController(DashboardController):
 
         return self.standard_layout(
             controls=[
-                *shared.department_and_team_picker(
+                *slicers.org.department_and_team_picker(
                     department_picker_id=self.DEPARTMENT_PICKER_ID,
                     team_picker_id=self.TEAM_PICKER_ID,
                 ),
-                *shared.date_range_picker(
+                *slicers.dates.date_range_picker(
                     html_element_id=self.DATE_RANGE_PICKER_ID,
                     display_format="YYYY/MM/DD",
                     display_format_month="MMM YYYY",
@@ -50,11 +50,15 @@ class WorktimeDashboardController(DashboardController):
         )
 
     def register_callbacks(self, app):
-        shared.callback_department_picker_state_saving(app, self.DEPARTMENT_PICKER_ID)
-        shared.callback_team_picker_state_saving(app, self.TEAM_PICKER_ID)
-        shared.callback_date_range_picker_state_saving(app, self.DATE_RANGE_PICKER_ID)
+        slicers.org.callback_department_picker_state_saving(
+            app, self.DEPARTMENT_PICKER_ID
+        )
+        slicers.org.callback_team_picker_state_saving(app, self.TEAM_PICKER_ID)
+        slicers.dates.callback_date_range_picker_state_saving(
+            app, self.DATE_RANGE_PICKER_ID
+        )
 
-        shared.callback_update_teams_by_department(
+        slicers.org.callback_update_teams_by_department(
             app=app,
             department_picker_id=self.DEPARTMENT_PICKER_ID,
             team_picker_id=self.TEAM_PICKER_ID,

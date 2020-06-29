@@ -1,7 +1,7 @@
 import pytest
 from datetime import datetime, time, timedelta
 
-from connectors.time_helpers import to_timedelta
+from helpers.time import to_timedelta
 
 
 class TestTimeHelpers:

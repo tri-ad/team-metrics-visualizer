@@ -6,7 +6,7 @@ from datetime import datetime, date, timedelta
 from connectors.shared import FileImporter, ImporterFileType
 from connectors.shared import COL_TEAM_CODE, ImporterReasonForSkip
 from database import db
-from connectors.time_helpers import to_timedelta
+from helpers.time import to_timedelta
 
 from structure.organization import Team
 from structure.measurements import OTMeasurement

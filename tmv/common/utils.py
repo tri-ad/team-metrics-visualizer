@@ -1,25 +1,8 @@
-from functools import wraps
-
-from flask import current_app, flash, abort
+from flask import current_app, flash
 from sqlalchemy.dialects.postgresql import insert as pg_insert
 
 from database import db
 from structure.project import StatusCategory, StatusCategoryStatusMapping
-
-
-def require_oauth_config(name):
-    def inner(f):
-        @wraps(f)
-        def wrapper(*args, **kwds):
-            try:
-                getattr(current_app.oauth, name)
-            except AttributeError:
-                return abort(404)
-            return f(*args, **kwds)
-
-        return wrapper
-
-    return inner
 
 
 def create_default_status_mappings(status_mapping_dict: dict):

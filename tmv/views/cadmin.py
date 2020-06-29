@@ -14,8 +14,12 @@ from flask_security import current_user
 from flask_admin import BaseView, expose
 from flask_admin.menu import MenuLink
 
-from file_handling.helpers import allowed_file, store_temp_file
-from file_handling.helpers import generate_temp_record_id, get_record_path
+from helpers.file_handling import (
+    allowed_file,
+    store_temp_file,
+    generate_temp_record_id,
+    get_record_path,
+)
 from database import db
 from structure.organization import Team
 from connectors.overtime.overtime_data_import import OTImporter

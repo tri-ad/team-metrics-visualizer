@@ -1,5 +1,5 @@
 import pytest
-from file_handling.helpers import allowed_file
+from helpers.file_handling import allowed_file
 from werkzeug.datastructures import FileStorage
 
 

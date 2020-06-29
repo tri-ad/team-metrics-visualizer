@@ -5,7 +5,7 @@ from flask_security import login_user
 
 from database import db
 from structure.auth import User, UserExternalService, UserExternalServiceEnum
-from common.utils import require_oauth_config
+from auth.oauth import require_oauth_config
 
 
 user = Blueprint("user", __name__)

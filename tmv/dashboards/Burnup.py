@@ -6,7 +6,8 @@ from dash.exceptions import PreventUpdate
 import dash_html_components as dhtml
 
 from dashboards import DashboardController
-from visuals import Burnup, shared
+from visuals import BurnupGraphController
+from visuals import shared
 
 
 class BurnupDashboardController(DashboardController):
@@ -15,7 +16,7 @@ class BurnupDashboardController(DashboardController):
     SPRINT_PICKER_ID = "sprintPicker"
 
     def __init__(self):
-        self.burnup_chart = Burnup.BurnupGraphController(chart_html_id=self.CHART_ID)
+        self.burnup_chart = BurnupGraphController(chart_html_id=self.CHART_ID)
 
     def title(self):
         return "Burnup Chart"

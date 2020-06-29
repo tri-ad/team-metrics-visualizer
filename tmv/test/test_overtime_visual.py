@@ -5,7 +5,7 @@ from database import db
 from structure.measurements import OTMeasurement
 from structure.organization import Team
 
-from visuals.Worktime import OvertimeChartController
+from visuals import OvertimeChartController
 from datetime import date, datetime, timedelta
 
 

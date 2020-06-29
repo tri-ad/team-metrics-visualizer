@@ -1,6 +1,8 @@
 from typing import List, Optional
 from dashboards import DashboardController
-from visuals import TeamHealthCheck, shared
+from visuals import shared
+from visuals import TeamHealthCheck
+from visuals import THCResultTableController, THCTrendGraphController
 import dash_html_components as dhtml
 from dash.dependencies import Input, Output
 
@@ -14,12 +16,10 @@ class TeamHealthCheckDashboardController(DashboardController):
     THC_TREND_GRAPH_ID = "THCTrendGraph"
 
     def __init__(self):
-        self.thc_table = TeamHealthCheck.THCResultTableController(
+        self.thc_table = THCResultTableController(
             table_html_id=self.THC_RESULT_TABLE_ID
         )
-        self.thc_trend = TeamHealthCheck.THCTrendGraphController(
-            graph_html_id=self.THC_TREND_GRAPH_ID
-        )
+        self.thc_trend = THCTrendGraphController(graph_html_id=self.THC_TREND_GRAPH_ID)
 
     def title(self):
         return "Team Health Check"

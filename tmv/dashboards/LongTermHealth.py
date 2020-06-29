@@ -4,7 +4,9 @@ from datetime import timedelta, datetime
 import dash_html_components as dhtml
 from dash.dependencies import Input, Output
 from dashboards.base import DashboardController
-from visuals import TeamHealthCheck, shared, Worktime
+from visuals import shared
+from visuals import THCResultTableController, OvertimeChartController
+from visuals import TeamHealthCheck
 
 
 class LongTermHealthDashboardController(DashboardController):
@@ -20,12 +22,10 @@ class LongTermHealthDashboardController(DashboardController):
     OVERTIME_GRAPH_ID = "OTChartLongTerm"
 
     def __init__(self):
-        self.thc_table = TeamHealthCheck.THCResultTableController(
+        self.thc_table = THCResultTableController(
             table_html_id=self.THC_RESULT_TABLE_ID
         )
-        self.ot_chart = Worktime.OvertimeChartController(
-            chart_html_id=self.OVERTIME_GRAPH_ID
-        )
+        self.ot_chart = OvertimeChartController(chart_html_id=self.OVERTIME_GRAPH_ID)
 
     def title(self) -> str:
         return "Team health"

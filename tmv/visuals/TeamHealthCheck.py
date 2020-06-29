@@ -27,9 +27,6 @@ from structure.organization import Team
 from helpers.color import hex_to_rgb
 from visuals import VisualController, shared, slicers_state
 
-idx = pd.IndexSlice
-
-
 # Helper-functions for drawing the table
 
 

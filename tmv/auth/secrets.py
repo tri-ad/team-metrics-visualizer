@@ -13,29 +13,29 @@ class SecretSource(Enum):
 
 def jira_token(token_name: str) -> Optional[str]:
     try:
-        return token(token_name, SecretSource(current_app.config["JIRA_OAUTH_LOC"]))
+        return _token(token_name, SecretSource(current_app.config["JIRA_OAUTH_LOC"]))
     except ValueError:
         allowed_values = ", ".join([member.value for member in SecretSource])
         logging.error(
             f"Please configure JIRA_OAUTH_LOC to take one of these values: {allowed_values}. "
             f"Defaulting to ENV."
         )
-        return token(token_name, SecretSource.Env)
+        return _token(token_name, SecretSource.Env)
 
 
 def jira_rsa_key(key_name: str) -> Optional[str]:
     try:
-        return rsa_key(key_name, SecretSource(current_app.config["JIRA_OAUTH_LOC"]))
+        return _rsa_key(key_name, SecretSource(current_app.config["JIRA_OAUTH_LOC"]))
     except ValueError:
         allowed_values = ", ".join([member.value for member in SecretSource])
         logging.error(
             f"Please configure JIRA_OAUTH_LOC to take one of these values: {allowed_values}. "
             f"Defaulting to ENV."
         )
-        return rsa_key(key_name, SecretSource.Env)
+        return _rsa_key(key_name, SecretSource.Env)
 
 
-def token(token_name: str, source: SecretSource) -> Optional[str]:
+def _token(token_name: str, source: SecretSource) -> Optional[str]:
     """
     Retrieves a token, either from local storage or using AWS.
 
@@ -50,7 +50,7 @@ def token(token_name: str, source: SecretSource) -> Optional[str]:
         return None
 
 
-def rsa_key(key_name: str, source: SecretSource) -> Optional[str]:
+def _rsa_key(key_name: str, source: SecretSource) -> Optional[str]:
     """
     Returns a correctly formatted RSA-key with name `key_name` from AWS or local.
 

@@ -6,7 +6,7 @@ from database import db
 from structure.organization import Team
 from structure.events import Sprint, IssueSnapshot
 from structure.project import Activity, StatusCategoryStatusMapping, StatusCategory
-from visuals.CumulativeFlow import CumulativeFlowGraphController
+from visuals import CumulativeFlowGraphController
 from datetime import date, datetime, timedelta
 
 
@@ -79,9 +79,7 @@ class TestCumulativeFlowVisual:
                 return Team.query.with_entities(Team.team_id)
 
         mocker.patch("visuals.base.current_user", UserMock())
-        mocker.patch(
-            "visuals.CumulativeFlow.CumulativeFlowGraphController.check_for_data"
-        )
+        mocker.patch("visuals.CumulativeFlowGraphController.check_for_data")
 
         cfgc = CumulativeFlowGraphController()
         data, _ = cfgc.update(sprint.sprint_id)
@@ -149,9 +147,7 @@ class TestCumulativeFlowVisual:
                 return Team.query.with_entities(Team.team_id)
 
         mocker.patch("visuals.base.current_user", UserMock())
-        mocker.patch(
-            "visuals.CumulativeFlow.CumulativeFlowGraphController.check_for_data"
-        )
+        mocker.patch("visuals.CumulativeFlowGraphController.check_for_data")
 
         cfgc = CumulativeFlowGraphController()
         data, _ = cfgc.update(sprint.sprint_id)

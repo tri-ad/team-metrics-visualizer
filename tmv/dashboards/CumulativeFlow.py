@@ -5,7 +5,8 @@ from dash.dependencies import Input, Output
 from dash.exceptions import PreventUpdate
 
 from dashboards import DashboardController
-from visuals import CumulativeFlow, shared
+from visuals import CumulativeFlowGraphController
+from visuals import shared
 
 
 class CumulativeFlowDashboardController(DashboardController):
@@ -14,7 +15,7 @@ class CumulativeFlowDashboardController(DashboardController):
     SPRINT_PICKER_ID = "sprint-picker-cfd"
 
     def __init__(self):
-        self.cumulative_flow_diagram = CumulativeFlow.CumulativeFlowGraphController(
+        self.cumulative_flow_diagram = CumulativeFlowGraphController(
             chart_html_id=self.CHART_ID
         )
 

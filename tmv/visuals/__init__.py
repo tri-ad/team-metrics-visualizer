@@ -1,1 +1,5 @@
 from visuals.base import VisualController, SprintVisualController
+from visuals.Burnup import BurnupGraphController
+from visuals.CumulativeFlow import CumulativeFlowGraphController
+from visuals.TeamHealthCheck import THCResultTableController, THCTrendGraphController
+from visuals.Worktime import OvertimeChartController

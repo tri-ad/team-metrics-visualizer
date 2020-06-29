@@ -6,7 +6,7 @@ from common.utils import create_default_status_mappings
 from structure.organization import Team
 from structure.events import Sprint, IssueSnapshot
 from structure.project import Activity, StatusCategory, StatusCategoryStatusMapping
-from visuals.Burnup import BurnupGraphController
+from visuals import BurnupGraphController
 from datetime import date, datetime, timedelta
 
 
@@ -73,7 +73,7 @@ class TestBurnupVisual:
                 return Team.query.with_entities(Team.team_id)
 
         mocker.patch("visuals.base.current_user", UserMock())
-        mocker.patch("visuals.Burnup.BurnupGraphController.check_for_data")
+        mocker.patch("visuals.BurnupGraphController.check_for_data")
 
         bgc = BurnupGraphController()
         data, _ = bgc.update(sprint.sprint_id)

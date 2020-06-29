@@ -5,7 +5,8 @@ import pandas as pd
 from dash_html_components import Div, Hr
 from dash.dependencies import Input, Output
 from dashboards import DashboardController
-from visuals import shared, Worktime
+from visuals import shared
+from visuals import OvertimeChartController
 from structure.organization import Team
 
 
@@ -20,9 +21,7 @@ class WorktimeDashboardController(DashboardController):
     OVERTIME_GRAPH_ID = "overtime-chart"
 
     def __init__(self):
-        self.ot_chart = Worktime.OvertimeChartController(
-            chart_html_id=self.OVERTIME_GRAPH_ID
-        )
+        self.ot_chart = OvertimeChartController(chart_html_id=self.OVERTIME_GRAPH_ID)
 
     def title(self) -> str:
         return "Worktime"

@@ -16,12 +16,16 @@ How to write a connector to some system
 + You can re-use or add code to ``tmv/connectors/shared.py`` in case it may be shared among other connectors.
 + If you are importing files (Excel, CSV, ...), please start by subclassing ``FileImporter`` in ``tmv/connectors/shared.py``. If it does not work with your files, consider extending it without breaking the current API.
 
+See here for more information: :doc:`connectors`.
+
 How to create a new dashboard using existing visuals
 ----------------------------------------------------
 + Create a new file in directory ``dashboards`` and start by subclassing the ``Dashboard``-class in ``tmv/dashboards/base.py``.
 + You need to at least implement the methods ``title()`` and ``dashboard()``. If you need callbacks, implement them in ``register_callbacks()``.
 + See the comments in ``tmv/dashboards/base.py`` for how to integrate your dashboard in the app or a tab bar.
 + _Hint_: The function ``standard_layout()`` of the ``Dashboard``-class is helpful if you want to quickly create a dashboard with a basic layout!
+
+See here for more information: :doc:`dashboards`.
 
 How to create a new visual
 --------------------------
@@ -30,6 +34,8 @@ How to create a new visual
 + A good practice is to use ``update()`` in ``draw()`` and provide it with initial values for filters.
 + See above on how to add your visual to one (or several) dashboards.
 + _Important:_ When filtering data via inputs, do not modify global variables or instance-variables of your visual. If you do this, the app will not work for multiple users, as they overwrite each other's data. See here for details: https://dash.plot.ly/sharing-data-between-callbacks
+
+See here for more information: :doc:`visuals`.
 
 How to add a view to the admin-area
 -----------------------------------
@@ -68,11 +74,3 @@ After this is done, register your new blueprint in ``tmv/app.py`` like so:
 
 
 That's it!
-
-.. toctree::
-   :maxdepth: 3
-   
-   connectors
-   dashboards
-   views
-   visuals

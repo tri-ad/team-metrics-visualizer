@@ -1,8 +1,5 @@
-connectors.overtime package
-===========================
-
-Submodules
-----------
+Overtime importer
+=================
 
 connectors.overtime.overtime_data_import module
 -----------------------------------------------

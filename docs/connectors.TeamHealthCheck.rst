@@ -1,8 +1,5 @@
-connectors.TeamHealthCheck package
-==================================
-
-Submodules
-----------
+Team Health Check importer
+==========================
 
 connectors.TeamHealthCheck.thc_import module
 --------------------------------------------

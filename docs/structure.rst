@@ -1,8 +1,5 @@
-structure package
-=================
-
-Submodules
-----------
+Database models
+===============
 
 structure.auth module
 ---------------------
@@ -50,15 +47,6 @@ structure.results module
 ------------------------
 
 .. automodule:: structure.results
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-
-Module contents
----------------
-
-.. automodule:: structure
     :members:
     :undoc-members:
     :show-inheritance:

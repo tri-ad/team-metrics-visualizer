@@ -28,7 +28,13 @@ Contents
    configuration
    deployment
    how_to_modify
-   overtime_data
+   connectors
+   dashboards
+   slicers
+   visuals
+   structure
+   adding_data
+   reference
    faqs
 
 

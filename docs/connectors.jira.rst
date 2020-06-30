@@ -1,8 +1,5 @@
-connectors.jira package
-=======================
-
-Submodules
-----------
+JIRA-connector
+===============
 
 connectors.jira.jira_core module
 --------------------------------

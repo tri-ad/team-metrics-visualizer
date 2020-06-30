@@ -31,44 +31,59 @@ To autoformat and lint staged git files run: `pipenv run pre-commit run`. After 
 
 ## Folder structure
 
-Structure below shows all folders and some key files.
+Structure below shows all folders up to depth 3.
 
-```
+```text
 .
-├── CONTRIBUTING.md     <-- This file.
-├── tmv-docker-prod     <-- Files for building docker images & docker-compose.
-│   └── app             <-- tmv app's Dockerfile & requirements for python-env.
-├── tmv-docker-dev      <-- Files for docker db for development.
-├── tmv_dash_components <-- Custom Dash components.
-└── tmv                 <-- Team Metrics visualizer app
-    ├── auth                <-- Module for handling authentication.
-    ├── aws                 <-- Module for calling AWS-services.
-    ├── connectors          <-- Data connectors/importers go here.
-    ├── ├── TeamHealthCheck <-- Importer for data from team health check.
-    ├── ├── jira            <-- Connector to JIRA.
-    ├── └── overtime        <-- Importer (future: connector) for overtime time-keeping.
-    ├── dashboards          <-- Dashboards classes which combine several Visuals.
-    ├── database            <-- DB-engine is initialized here (via SQLAlchemy).
-    ├── file_handling       <-- Helper-functions for handling of files uploaded by user.
-    ├── static              <-- Images, Scripts, CSS-files etc. Contains bootstrap-CSS.
-    │   ├── TeamHealthCheck <-- Icons which can be used for team health check visual.
-    │   ├── dash            <-- Assets for dash (currently: only favicon).
-    │   └── scripts         <-- JavaScripts.
-    ├── structure           <-- The data models are defined here.
-    ├── style               <-- The source Sass files implementing the default theme are here.
-    ├── templates           <-- Templates for usage with flask views. Has a folder for each section.
-    │   ├── admin           <-- Templates for admin views.
-    │   └── cadmin          <-- Templates for admin views which provide functionality outside Flask-Admin (for data upload etc.)
-    ├── test                <-- All tests go here and should be named "test_*.py".
-    │   └── resources       <-- Put sample data for the tests here.
-    ├── tools               <-- CLI-tools can be found here.
-    │   ├── db_tool.py      <-- CLI-tool to create database tables and import data.
-    │   └── sample_data     <-- Data for import through CLI-tools to fill an empty database.
-    ├── views               <-- Views for flask. Different file for each section.
-    └── visuals             <-- Classes for visuals which go on dashboards are here.
+├── CONTRIBUTING.md     # This file.
+├── docs                # Documentation (as rst)
+│   └── _static         # Assets used in documentation
+├── tmv                 # The app's sourcecode
+│   ├── auth            # Authentication & secrets
+│   ├── aws             # Interaction with AWS (if required)
+│   ├── common          # Code shared in several places
+│   ├── connectors      # Used to read data from various sources
+│   │   ├── TeamHealthCheck # ... for team health check
+│   │   ├── jira            # ... JIRA
+│   │   └── overtime        # ... and Excel-import of worktime data
+│   ├── dashboards      # Dashboard-classes using visuals and slicers
+│   ├── database        # Database interaction
+│   ├── helpers         # Helper-functions
+│   ├── migrations      # Database migrations using flask-migrate
+│   │   └── versions
+│   ├── slicers         # Slicers (filters) for use in dashboards
+│   ├── static          # CSS, JS, logo, etc.
+│   │   ├── admin
+│   │   └── dash
+│   ├── structure       # Database models
+│   ├── style           # Styles using Sass
+│   │   └── vendors
+│   ├── tasks           # Celery-tasks for data download
+│   ├── templates       # Templates for views which are not visuals
+│   │   ├── admin
+│   │   ├── cadmin
+│   │   └── security
+│   ├── test            # Tests
+│   │   └── resources
+│   ├── test_coverage   # Coverage report stored here if you create it
+│   ├── tmv_dash_components -> ../tmv_dash_components/tmv_dash_components/
+│   ├── tools           # A CLI-tool to mass-import data
+│   ├── views           # Views, mainly for admin area
+│   └── visuals         # Visuals to be used in dashboards
+├── tmv-docker-dev      # docker-compose for dev-setup
+├── tmv-docker-prod     # docker-compose for deployment
+│   └── app
+└── tmv_dash_components # Custom dash-components used in the tool
+    ├── src
+    │   ├── demo
+    │   └── lib
+    ├── tests
+    └── tmv_dash_components
+
+43 directories
 ```
 
-Built with `tree . -d -I __pycache__`.
+Built with `tree . -d -I "__pycache__|node_modules|temp_uploads|_build" -L 3`.
 
 ## How to write tests
 

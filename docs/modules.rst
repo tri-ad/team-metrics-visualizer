@@ -1,6 +1,5 @@
-Module reference
-================
-.. TODO: We have the module index, so this is probably not needed anymore.
+tmv
+===
 
 .. toctree::
    :maxdepth: 4
@@ -10,13 +9,13 @@ Module reference
    aws
    common
    connectors
-   dash_custom_auth
    dash_layout
    dashboards
    database
-   file_handling
    gunicorn_app
+   helpers
    runcelery
+   slicers
    structure
    tasks
    tools

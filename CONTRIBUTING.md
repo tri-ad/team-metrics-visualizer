@@ -8,6 +8,18 @@ Contributing to this project is quite straightforward and works like this:
 1. Make some changes!
 1. Create a pull request, targeting `master`.
 
+## Table of contents
+
+- [Pull requests](#Pull-requests)
+- [Commit rules](#Commit-rules)
+- [Code guidelines](#Code-guidelines)
+- [IDE configuration](#IDE-configuration)
+- [Folder structure](#Folder-structure)
+- [How to write tests](#How-to-write-tests)
+- [Documentation](#Documentation)
+- [Database migrations](#Database-migrations)
+- [Styling](#Styling)
+
 ## Pull requests
 
 When creating pull request, please make sure the following:
@@ -27,7 +39,40 @@ The code is automatically checked in pre-commit hooks via `pre-commit`.
 - `black` is used for autoformatting
 - `pylint` is used for linting
 
-To autoformat and lint staged git files run: `pipenv run pre-commit run`. After that you may need to fix linter warnings and `git add` fixed and reformatted files
+To autoformat and lint staged git files run: `pipenv run pre-commit run`. After that you may need to fix linter warnings and `git add` fixed and reformatted files.
+
+You can have a look at `pylintrc` to see which linter checks we disabled.
+
+## IDE configuration
+
+We use Visual Studio Code for development, but you are of course free to use any IDE or editor you would like. If you use Visual Studio Code, we recommend to add the following to your workspace configuration:
+
+```json
+    "python.autoComplete.extraPaths": [
+        "./tmv"
+    ],
+    "python.formatting.provider": "black",
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true,
+    "python.testing.pytestEnabled": true,
+    "python.testing.nosetestsEnabled": false,
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestArgs": [
+        "tmv/test"
+    ],
+    "python.languageServer": "Microsoft",
+    "editor.rulers": [
+        88
+    ]
+```
+
+We recommend to install the following extensions to make development easier:
+
+- [Python Docstring Generator](https://marketplace.visualstudio.com/items?itemName=njpwerner.autodocstring) (with setting `"autoDocstring.docstringFormat": "sphinx"`)
+- [reStructuredText](https://marketplace.visualstudio.com/items?itemName=lextudio.restructuredtext)
+- [markdownlint](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint)
+
+And of course [Microsoft's Python-extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python).
 
 ## Folder structure
 
@@ -132,7 +177,7 @@ flask db upgrade
 - Revert to previous revision with `flask db downgrade`
 - Show the current DB revision with `flask db current`
 
-## Theming
+## Styling
 
 We use [Dash Bootstrap Components](https://dash-bootstrap-components.opensource.faculty.ai/) for most UI components.
 We use [Bootstrap](https://getbootstrap.com/) with Sass to style them.

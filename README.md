@@ -1,6 +1,8 @@
 # Team Metrics Visualizer
-![CI-Pipeline status](https://github.com/tri-ad/team-metrics-visualizer/workflows/Continuous%20Integration/badge.svg?branch=master)
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+![CI-Pipeline status](https://github.com/tri-ad/team-metrics-visualizer/workflows/Continuous%20Integration/badge.svg?branch=master)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 Team Metrics Visualizer is a tool teams can use to gather data from various other tools and create helpful visualisations from it.
 
@@ -34,7 +36,7 @@ After cloning the repo, perform the following steps to create your development e
 
 1. Start database container by executing ``./run_docker-compose.sh`` in folder ``tmv-docker-dev``
 1. Start celery: ``pipenv run celery -A runcelery:celery worker -B --loglevel=info``. If you have trouble with this, check the FAQs in the documentation.
-1. Start app: ``pipenv run flask run``. 
+1. Start app: ``pipenv run flask run``.
 
 App is reachable at <http://127.0.0.1:8050/>.
 

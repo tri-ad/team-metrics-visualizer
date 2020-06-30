@@ -8,55 +8,55 @@ visuals.base module
 -------------------
 
 .. automodule:: visuals.base
-    :members:
-    :undoc-members:
-    :show-inheritance:
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+visuals.burnup module
+---------------------
+
+.. automodule:: visuals.burnup
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+visuals.cumulative\_flow module
+-------------------------------
+
+.. automodule:: visuals.cumulative_flow
+   :members:
+   :undoc-members:
+   :show-inheritance:
 
 visuals.shared module
 ---------------------
 
 .. automodule:: visuals.shared
-    :members:
-    :undoc-members:
-    :show-inheritance:
+   :members:
+   :undoc-members:
+   :show-inheritance:
 
-visuals.Burnup module
----------------------
+visuals.team\_health\_check module
+----------------------------------
 
-.. automodule:: visuals.Burnup
-    :members:
-    :undoc-members:
-    :show-inheritance:
+.. automodule:: visuals.team_health_check
+   :members:
+   :undoc-members:
+   :show-inheritance:
 
-visuals.CumulativeFlow module
------------------------------
+visuals.work\_time module
+-------------------------
 
-.. automodule:: visuals.CumulativeFlow
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-visuals.TeamHealthCheck module
-------------------------------
-
-.. automodule:: visuals.TeamHealthCheck
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-visuals.Worktime module
------------------------
-
-.. automodule:: visuals.Worktime
-    :members:
-    :undoc-members:
-    :show-inheritance:
+.. automodule:: visuals.work_time
+   :members:
+   :undoc-members:
+   :show-inheritance:
 
 
 Module contents
 ---------------
 
 .. automodule:: visuals
-    :members:
-    :undoc-members:
-    :show-inheritance:
+   :members:
+   :undoc-members:
+   :show-inheritance:

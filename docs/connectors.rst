@@ -26,14 +26,6 @@ connectors.shared module
     :undoc-members:
     :show-inheritance:
 
-connectors.time_helpers module
-------------------------------
-
-.. automodule:: connectors.time_helpers
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
 
 Module contents
 ---------------

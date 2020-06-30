@@ -1,29 +1,29 @@
-auth package
-============
+helpers package
+===============
 
 Submodules
 ----------
 
-auth.dash\_custom\_auth module
-------------------------------
+helpers.color module
+--------------------
 
-.. automodule:: auth.dash_custom_auth
+.. automodule:: helpers.color
    :members:
    :undoc-members:
    :show-inheritance:
 
-auth.oauth module
------------------
+helpers.file\_handling module
+-----------------------------
 
-.. automodule:: auth.oauth
+.. automodule:: helpers.file_handling
    :members:
    :undoc-members:
    :show-inheritance:
 
-auth.secrets module
+helpers.time module
 -------------------
 
-.. automodule:: auth.secrets
+.. automodule:: helpers.time
    :members:
    :undoc-members:
    :show-inheritance:
@@ -32,7 +32,7 @@ auth.secrets module
 Module contents
 ---------------
 
-.. automodule:: auth
+.. automodule:: helpers
    :members:
    :undoc-members:
    :show-inheritance:

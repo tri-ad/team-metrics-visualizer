@@ -258,13 +258,3 @@ class BurndownMeasurement(db.Model):
                 self.sp_swapped,
             )
         )
-
-
-"""
-TODO: Add class for Cumulative-Flow measurement
-    sprint
-    sp_todo
-    sp_in_progress
-    sp_done
-
-"""

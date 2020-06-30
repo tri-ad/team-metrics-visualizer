@@ -42,18 +42,6 @@ from structure.project import (
 from views.cadmin import UploadDataView
 
 
-"""
-Add pages for managing SQLAlchemy models
-    For a SQLAlchemy-model `MyModel`, you can easily create an admin view
-    which provides CRUD-functionality like this:
-        mymodel_view = ModelView(MyModel, db_session)
-    You can then automatically create a menu link in the NavBar with:
-        admin.add_view(mymodel_view)
-    Using the parameter `name`, you can give the menu-link a name and with
-        `category`, you can add it to a sub-menu.
-"""
-
-
 class CheckSuperuserRoleMixin:
     def is_accessible(self):
         return current_user.is_superadmin

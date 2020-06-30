@@ -5,21 +5,25 @@ repos:
       - id: check-yaml
       - id: trailing-whitespace
         types: [python]
+      - id: check-case-conflict
+      - id: check-docstring-first
+        exclude: "db_tool.py"
 
   - repo: local
     hooks:
-    - id: black
-      name: black
-      entry: pipenv run black
-      language: python
-      language_version: python3
-      require_serial: true
-      types: [python]
-      files: '^tmv/'
-    - id: pylint
-      name: pylint
-      entry: pipenv run pylint
-      language: python
-      language_version: python3
-      types: [python]
-      files: '^tmv/'
+      - id: black
+        name: black
+        entry: pipenv run black
+        language: python
+        language_version: python3
+        require_serial: true
+        types: [python]
+        files: "^tmv/"
+      - id: pylint
+        name: pylint
+        entry: pipenv run pylint
+        language: python
+        language_version: python3
+        types: [python]
+        files: "^tmv/"
+        exclude: "^tmv/migrations"

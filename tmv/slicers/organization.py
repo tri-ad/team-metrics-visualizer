@@ -13,10 +13,7 @@ import tmv_dash_components as tdc
 from slicers.state import callback_slicer_state_saving, load_slicer_value
 
 
-"""
-    ID to use for the option "all items in a dropdown-picker.
-    E.g.: All departments.
-"""
+#: ID to use for the option "all items in a dropdown-picker. E.g.: All departments.
 ALL_ITEMS_OPTION_ID = -1
 
 

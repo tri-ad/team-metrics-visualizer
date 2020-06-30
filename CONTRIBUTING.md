@@ -81,7 +81,7 @@ Structure below shows all folders up to depth 3.
 ```text
 .
 ├── CONTRIBUTING.md     # This file.
-├── docs                # Documentation (as rst)
+├── docs                # Documentation (as reST)
 │   └── _static         # Assets used in documentation
 ├── tmv                 # The app's sourcecode
 │   ├── auth            # Authentication & secrets

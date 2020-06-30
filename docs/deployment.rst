@@ -13,7 +13,7 @@ On your remote server, do the following:
 #.  Clone the repo
 #.  Switch to folder ``tmv-docker-prod``.
 #.  In ``tmv-docker-prod``, create a file ``.env`` for configuration. You can use the 
-    provided ``sample.env`` as a template - it contains all necessary configuration variables.
+    provided ``sample.env`` (in ``docs``) as a template - it contains all necessary configuration variables.
 #.  Either expose the app container's port or use nginx reverse proxy docker companion 
     (see below for instructions).
 #.  Build the docker-images: ``./docker-compose.sh build --pull``

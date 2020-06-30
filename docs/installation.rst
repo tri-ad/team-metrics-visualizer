@@ -16,7 +16,7 @@ After cloning the repo, perform the following steps to create your development e
 
 #. Install dependencies: ``pipenv sync --dev --python /path/to/your/python3.8``.
 #. Install pre-commit hooks: ``pipenv run pre-commit install``.
-#. Create ``.env``-file in folder ``tmv`` for configuration. You can find a ``sample.env`` with all required configuration variables in the project root.
+#. Create ``.env``-file in folder ``tmv`` for configuration. You can find a ``sample.env`` with all required configuration variables in folder ``docs``.
 #. Switch to folder ``tmv-docker-dev``.
 #. Start database container for local development: ``./run_docker-compose.sh``.
 #. Switch to custom dash components folder ``tmv_dash_components``.

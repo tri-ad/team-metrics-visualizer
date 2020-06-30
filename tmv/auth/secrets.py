@@ -1,6 +1,5 @@
 import logging
-import os
-from enum import Enum, auto
+from enum import Enum
 from aws import secretsManager
 from flask import current_app
 from typing import Optional

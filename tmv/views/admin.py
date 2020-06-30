@@ -1,21 +1,16 @@
 import logging
 import traceback
-from datetime import datetime, timedelta
-from typing import Optional
 
-from dateutil.tz import tzutc
 from flask import (
-    Blueprint,
     current_app,
     flash,
-    Flask,
     jsonify,
     redirect,
     request,
     session,
     url_for,
 )
-from flask_admin import Admin, BaseView, expose, AdminIndexView
+from flask_admin import Admin, expose, AdminIndexView
 from flask_admin.contrib.sqla.fields import QuerySelectField
 from flask_admin.helpers import get_form_data, get_redirect_target
 from flask_admin.model.form import InlineFormAdmin
@@ -28,26 +23,23 @@ from flask_security.utils import encrypt_password
 from sqlalchemy import func
 from sqlalchemy.dialects.postgresql import insert as pg_insert
 from wtforms import form
-from wtforms.fields import PasswordField, HiddenField, SelectField, StringField
+from wtforms.fields import PasswordField, HiddenField, StringField
 from wtforms.validators import InputRequired
 
 from common.utils import create_default_status_mappings
 from connectors.jira import jira_core
-from connectors.jira.jira_sync import JiraSync
 from database import db
-from structure.auth import User, Role, UserTeam, TeamRoleEnum
+from structure.auth import User, UserTeam, TeamRoleEnum
 from structure.events import IssueSnapshot, Sprint
 from structure.organization import Team
 from structure.measurements import THCQuestion, THCMeasurement
-from structure.measurements import OTMeasurement
+from structure.measurements import OTMeasurement  # pylint: disable=unused-import
 from structure.project import (
     Activity,
     JiraProject,
     StatusCategoryStatusMapping,
-    StatusCategory,
 )
 from views.cadmin import UploadDataView
-from celery.result import AsyncResult
 
 
 """

@@ -1,12 +1,11 @@
 import logging
 import re
-from datetime import date, datetime, timedelta
+from datetime import datetime
 from typing import Dict, List, Optional, Tuple
 
 from dateutil import rrule
 from dateutil.parser import isoparse
 from dateutil.tz import tzutc
-from dateutil.utils import default_tzinfo
 from flask import current_app
 from sqlalchemy.dialects.postgresql import insert as pg_insert
 

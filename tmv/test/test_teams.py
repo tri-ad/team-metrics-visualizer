@@ -1,7 +1,6 @@
 import pytest
 from database import db
 from structure.organization import Team
-from structure.project import Activity
 
 
 @pytest.mark.usefixtures("app")

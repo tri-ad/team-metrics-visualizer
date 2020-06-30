@@ -1,15 +1,13 @@
 import logging
 from abc import ABC, abstractmethod
-from datetime import datetime, timedelta
+from datetime import datetime
 from typing import List
 
-import dash_core_components as dcc
 import plotly.graph_objects as go
 from dateutil import rrule
 from dateutil.tz import tzutc
 from flask_security import current_user
 
-from connectors.jira.jira_sync import JiraSync
 from structure.events import Sprint
 from structure.project import Activity
 

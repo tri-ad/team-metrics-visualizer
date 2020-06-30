@@ -1,5 +1,4 @@
 from dash.dependencies import Output, Input
-import dash_html_components as dhtml
 from flask_security import current_user
 from dash_layout import USER_GREETING_ID
 

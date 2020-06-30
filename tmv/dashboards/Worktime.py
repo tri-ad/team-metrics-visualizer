@@ -1,9 +1,7 @@
-import logging
 from typing import List
 from datetime import datetime, timedelta
-import pandas as pd
-from structure.organization import Team
-from dash_html_components import Div, Hr
+
+from structure.organization import Team  # pylint: disable=unused-import
 from dash.dependencies import Input, Output
 from dashboards import DashboardController
 from visuals import OvertimeChartController

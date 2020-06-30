@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from flask import Blueprint, redirect, current_app, url_for, abort, flash, request
+from flask import Blueprint, redirect, current_app, url_for, flash, request
 from flask_security import login_user
 
 from database import db

@@ -4,10 +4,10 @@ from enum import Enum
 from dateutil.tz import tzutc
 from dateutil.utils import default_tzinfo
 from sqlalchemy.ext.hybrid import hybrid_property
-from sqlalchemy import cast, String, select, or_
+from sqlalchemy import select, or_
 
 from database import db
-from structure.project import StatusCategory, StatusCategoryStatusMapping
+from structure.project import StatusCategoryStatusMapping
 
 
 class Sprint(db.Model):

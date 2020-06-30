@@ -1,19 +1,13 @@
 import logging
 from collections import namedtuple
-from datetime import datetime, timedelta
-from enum import Enum
 from typing import Dict, List, Optional, Tuple
-import numpy as np
 import pandas as pd
 from database import db
 
 from flask_security import current_user
-from sqlalchemy import and_, desc, func, or_
+from sqlalchemy import and_, desc, func
 import dash_core_components as dcc
-import dash_html_components as dhtml
-import dash_table
 import plotly.graph_objects as go
-from dash_bootstrap_components import ButtonGroup, Container, Label
 
 import tmv_dash_components as tdc
 from structure.measurements import (

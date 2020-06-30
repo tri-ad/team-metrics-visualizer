@@ -1,15 +1,13 @@
 import logging
-from collections import namedtuple
 from datetime import date, datetime, timedelta
 from typing import List, Optional, Union
 
 import dash_core_components as dcc
-import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
 from dateutil import parser as du_parser
 from flask_security import current_user
-from sqlalchemy import and_, asc, desc, or_
+from sqlalchemy import and_, asc, desc
 
 from database import db
 from structure.measurements import OTMeasurement

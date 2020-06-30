@@ -1,9 +1,8 @@
-from typing import List, Optional
+from typing import List
 
 import dash_core_components as dcc
 from dash.dependencies import Input, Output
 from dash.exceptions import PreventUpdate
-import dash_html_components as dhtml
 
 from dashboards import DashboardController
 from visuals import BurnupGraphController

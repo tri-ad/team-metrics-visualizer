@@ -1,7 +1,6 @@
 import logging
 from datetime import datetime, timedelta, time, date
 import re
-import pandas as pd
 
 
 def to_timedelta(value) -> timedelta:

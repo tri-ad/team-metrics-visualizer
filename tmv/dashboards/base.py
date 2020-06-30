@@ -6,8 +6,6 @@ import dash_html_components as dhtml
 from dash_bootstrap_components import Col, Row
 from dash_html_components import Div
 
-from database import db
-
 
 class DashboardController(ABC):
     """

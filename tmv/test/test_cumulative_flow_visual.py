@@ -1,5 +1,4 @@
 import pytest
-from unittest.mock import patch
 from database import db
 
 
@@ -7,7 +6,7 @@ from structure.organization import Team
 from structure.events import Sprint, IssueSnapshot
 from structure.project import Activity, StatusCategoryStatusMapping, StatusCategory
 from visuals import CumulativeFlowGraphController
-from datetime import date, datetime, timedelta
+from datetime import datetime, timedelta
 
 
 @pytest.mark.usefixtures("app")

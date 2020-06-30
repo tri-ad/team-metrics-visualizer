@@ -1,6 +1,6 @@
 from dash_auth.auth import Auth
 from flask_security import current_user, login_required
-from flask import redirect, url_for, request, current_app
+from flask import current_app
 
 
 class DashFlaskSecurityAuth(Auth):

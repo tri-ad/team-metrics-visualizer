@@ -1,10 +1,6 @@
-from typing import List, Optional
 from dashboards import DashboardController
 from visuals import THCResultTableController, THCTrendGraphController
-from slicers import thc
 import slicers
-import dash_html_components as dhtml
-from dash.dependencies import Input, Output
 
 
 class TeamHealthCheckDashboardController(DashboardController):

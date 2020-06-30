@@ -1,13 +1,11 @@
 import pytest
-from unittest.mock import patch
 from database import db
 
-from common.utils import create_default_status_mappings
 from structure.organization import Team
 from structure.events import Sprint, IssueSnapshot
 from structure.project import Activity, StatusCategory, StatusCategoryStatusMapping
 from visuals import BurnupGraphController
-from datetime import date, datetime, timedelta
+from datetime import datetime, timedelta
 
 
 @pytest.mark.usefixtures("app")

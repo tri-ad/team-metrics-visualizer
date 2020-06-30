@@ -1,4 +1,4 @@
-import pytest
+import pytest  # pylint: disable=unused-import
 from datetime import datetime, time, timedelta
 
 from helpers.time import to_timedelta

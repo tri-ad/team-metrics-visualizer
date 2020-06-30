@@ -1,9 +1,6 @@
 import pytest
 from test import TEST_RESOURCES_DIRECTORY
 
-from pathlib import Path
-
-from datetime import date
 from database import db
 from tools.db_tool import action_import_thc_questions
 from connectors.TeamHealthCheck.thc_import import THCImporter

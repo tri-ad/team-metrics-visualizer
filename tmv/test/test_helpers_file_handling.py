@@ -1,4 +1,4 @@
-import pytest
+import pytest  # pylint: disable=unused-import
 from helpers.file_handling import allowed_file
 from werkzeug.datastructures import FileStorage
 

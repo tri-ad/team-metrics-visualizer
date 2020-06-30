@@ -1,8 +1,5 @@
-from abc import ABC
-from datetime import datetime, timedelta
-from structure.results import SHCResults, SP
-from structure.events import Sprint
-from structure.project import Activity
+from structure.events import Sprint  # pylint: disable=unused-import
+from structure.project import Activity  # pylint: disable=unused-import
 from functools import total_ordering
 
 from enum import Enum

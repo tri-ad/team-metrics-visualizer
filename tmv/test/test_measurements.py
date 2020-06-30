@@ -1,8 +1,6 @@
-import pytest
-from datetime import datetime, date, timedelta
-from structure.organization import Team
-from structure.measurements import BurndownMeasurement
-from structure.measurements import THCMeasurement, THCQuestion
+import pytest  # pylint: disable=unused-import
+from datetime import date, timedelta
+from structure.organization import Team  # pylint: disable=unused-import
 from structure.measurements import OTMeasurement
 
 

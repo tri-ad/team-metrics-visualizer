@@ -1,11 +1,11 @@
 import traceback
 from datetime import datetime, timedelta
 
-from celery.schedules import crontab
+from celery.schedules import crontab  # pylint: disable=unused-import
 from dateutil.tz import tzutc
 
 from connectors.jira.jira_sync import JiraSync
-from database import db
+from database import db  # pylint: disable=unused-import
 from runcelery import celery as celery_app
 from structure.events import Sprint
 from structure.project import JiraProject, Activity

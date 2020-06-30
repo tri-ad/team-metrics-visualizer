@@ -9,7 +9,6 @@ from flask_security import (
     UserMixin,
 )
 from sqlalchemy import PrimaryKeyConstraint, UniqueConstraint, text
-from sqlalchemy.orm import column_property
 
 from database import db
 

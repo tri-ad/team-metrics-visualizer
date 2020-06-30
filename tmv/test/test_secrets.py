@@ -1,4 +1,4 @@
-import pytest
+import pytest  # pylint: disable=unused-import
 from auth import secrets
 
 mock_config = {

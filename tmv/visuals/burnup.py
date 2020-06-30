@@ -1,17 +1,12 @@
-import logging
-from datetime import datetime, timedelta
-from typing import Dict, List, Optional
+from typing import List
 
 import dash_core_components as dcc
 import plotly.graph_objects as go
 import sqlalchemy as sa
-from dateutil.tz import tzutc
-from flask_security import current_user
 
-from connectors.jira.jira_sync import JiraSync
 from database import db
 from structure.events import Sprint, IssueSnapshot
-from structure.project import Activity, StatusCategory
+from structure.project import Activity, StatusCategory  # pylint: disable=unused-import
 from visuals.base import SprintVisualController
 
 

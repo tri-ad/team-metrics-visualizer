@@ -2,10 +2,8 @@ import tempfile
 import pytest
 from common.exceptions import MissingConfigurationError
 from database import db as flask_app_db
-from flask_migrate import downgrade, upgrade
-from sqlalchemy.orm import sessionmaker
+from flask_migrate import upgrade
 from sqlalchemy import create_engine
-from sqlalchemy.engine.url import URL as db_url
 from sqlalchemy.exc import ProgrammingError
 from flask_sqlalchemy import SQLAlchemy
 import time

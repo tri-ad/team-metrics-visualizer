@@ -1,9 +1,7 @@
 import logging
-from typing import Optional, List
+from typing import Optional
 
 from flask import (
-    abort,
-    Blueprint,
     flash,
     redirect,
     request,
@@ -12,7 +10,6 @@ from flask import (
 )
 from flask_security import current_user
 from flask_admin import BaseView, expose
-from flask_admin.menu import MenuLink
 
 from helpers.file_handling import (
     allowed_file,
@@ -20,7 +17,7 @@ from helpers.file_handling import (
     generate_temp_record_id,
     get_record_path,
 )
-from database import db
+from database import db  # pylint: disable=unused-import
 from structure.organization import Team
 from connectors.overtime.overtime_data_import import OTImporter
 from tools.db_tool import action_process_overtime_data, action_commit_overtime_data

@@ -1,14 +1,13 @@
 import logging
-from typing import Optional, List
-import pandas as pd
-from datetime import datetime, date, timedelta
+from typing import List
+from datetime import datetime
 
 from connectors.shared import FileImporter, ImporterFileType
-from connectors.shared import COL_TEAM_CODE, ImporterReasonForSkip
+from connectors.shared import ImporterReasonForSkip
 from database import db
 from helpers.time import to_timedelta
 
-from structure.organization import Team
+from structure.organization import Team  # pylint: disable=unused-import
 from structure.measurements import OTMeasurement
 
 COL_WORKDAYS_FIX = "Fixed Working days"

@@ -1,4 +1,3 @@
-import logging
 from typing import List
 from datetime import timedelta, datetime
 import dash_html_components as dhtml

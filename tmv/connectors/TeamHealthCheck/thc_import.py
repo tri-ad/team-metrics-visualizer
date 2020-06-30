@@ -3,8 +3,6 @@ from typing import Optional
 from connectors.shared import FileImporter, ImporterReasonForSkip
 from database import db
 import pandas as pd
-import numpy as np
-from math import floor
 from structure.organization import Team
 from structure.measurements import THCQuestion, THCMeasurement
 

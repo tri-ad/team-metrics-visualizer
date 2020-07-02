@@ -14,7 +14,7 @@ services:
     expose:
       - 8000
     working_dir: /src/tmv
-    command: sh -c "flask db upgrade head && gunicorn --bind 0.0.0.0 gunicorn_app:app"
+    command: sh -c "flask db upgrade head && gunicorn --bind 0.0.0.0 --workers ${GUNICORN_WORKERS} gunicorn_app:app"
 
   tmv_celery:
     build:

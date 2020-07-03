@@ -53,6 +53,10 @@ class FileImporter(ABC):
     def __init__(
         self, file_name: str, file_type: Optional[ImporterFileType] = None, **kwargs
     ):
+        # Make sure kwargs is a dict
+        if not kwargs:
+            kwargs = dict()
+
         # Data of Excel sheet is to be stored here. Dict of dataframes
         self._data: Optional[Dict[str, pd.DataFrame]] = None
         # Remember if only one sheet was read or not
@@ -126,6 +130,13 @@ class FileImporter(ABC):
 
             __read_file('myfile.xlsx', pd.read_excel, index_col=(0,1,2))
         """
+        if not eng_kwargs:
+            eng_kwargs = dict()
+
+        # Use openpyxl as pandas' Excel-engine (#19)
+        if engine == pd.read_excel:
+            eng_kwargs["engine"] = "openpyxl"
+
         try:
             data = engine(file_name, **eng_kwargs)
         except FileNotFoundError as e:

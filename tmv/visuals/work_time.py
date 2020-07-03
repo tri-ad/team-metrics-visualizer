@@ -152,9 +152,7 @@ class OvertimeChartController(VisualController):
         )
 
         data.reset_index(inplace=True)
-        data.sort_values(
-            by=["team_name", "measurement_date"], inplace=True
-        )  # TODO: Bump to pandas 1.0 #34
+        data.sort_values(by=["team_name", "measurement_date"], inplace=True)
         data["label"] = data.apply(
             lambda x: "%s %s"
             % (

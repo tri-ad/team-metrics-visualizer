@@ -67,7 +67,7 @@ class THCResultTableController(VisualController, _TeamHealthCheckVisualControlle
     }
 
     def __init__(
-        self, filter_sessions: (str, str) = None, table_html_id: str = "thc_result"
+        self, filter_sessions: Tuple[str, str] = None, table_html_id: str = "thc_result"
     ):
         self.table_html_id = table_html_id
 
@@ -287,7 +287,7 @@ class THCResultTableController(VisualController, _TeamHealthCheckVisualControlle
 
         return rows
 
-    def default_selection(self) -> (List[int], str, str):
+    def default_selection(self) -> Tuple[List[int], str, str]:
         """ Return default selection for teams and sessions """
         # Retrieve most recent two sessions from database
         sessions_result = (
@@ -336,7 +336,7 @@ class THCResultTableController(VisualController, _TeamHealthCheckVisualControlle
 
     def update(
         self, team_ids: List[int], session1: str, cmp_session: str
-    ) -> (List, pd.DataFrame):
+    ) -> Tuple[List, pd.DataFrame]:
         """
         Return columns, data and formatting for THC data table.
         Table content is built for teams in `team_ids` and sessions `session1`
@@ -379,7 +379,7 @@ class THCTrendGraphController(VisualController, _TeamHealthCheckVisualController
             id=self.graph_html_id, figure=go.Figure(data=data, layout=layout)
         )
 
-    def update(self, team_id: int) -> (List[go.Sankey], Dict):
+    def update(self, team_id: int) -> Tuple[List[go.Sankey], Dict]:
         nodes, links, err_msg = self.update_nodes_and_links(team_id=team_id)
         data = [self.sankey_graph(nodes, links)]
 
@@ -395,7 +395,7 @@ class THCTrendGraphController(VisualController, _TeamHealthCheckVisualController
 
         return data, layout
 
-    def update_nodes_and_links(self, team_id: int) -> (Dict, Dict, Optional[str]):
+    def update_nodes_and_links(self, team_id: int) -> Tuple[Dict, Dict, Optional[str]]:
         err_msg = None
         nodes = dict()
         links = dict()
@@ -433,7 +433,7 @@ class THCTrendGraphController(VisualController, _TeamHealthCheckVisualController
 
     def __sankey_nodes_and_links(
         self, data: pd.DataFrame, sessions, questions
-    ) -> (Dict, Dict):
+    ) -> Tuple[Dict, Dict]:
         """ Drawing the Sankey-diagram makes only sense, if we have >=2
             sessions (nodes columns) available. """
 
@@ -457,7 +457,7 @@ class THCTrendGraphController(VisualController, _TeamHealthCheckVisualController
 
         return nodes, links
 
-    def __sankey_nodes(self, sessions: List[str]) -> (List, List):
+    def __sankey_nodes(self, sessions: List[str]) -> Tuple[List, List]:
         node_labels = []
         node_colors = []
 
@@ -473,7 +473,7 @@ class THCTrendGraphController(VisualController, _TeamHealthCheckVisualController
 
     def __sankey_links(  # pylint: disable=too-many-locals
         self, data: pd.DataFrame, sessions: List, questions: List
-    ) -> (List, List, List, List):
+    ) -> Tuple[List, List, List, List]:
         sources = []
         targets = []
         values = []

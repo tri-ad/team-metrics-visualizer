@@ -87,7 +87,7 @@ class TestCumulativeFlowVisual:
         assert len(data) == 3
 
         # test we're not getting multiple data per day
-        for lines in data:
+        for lines in data:  # type: ignore
             assert len(lines.y) == len(lines.x)
 
         # test done is first, to-do is last for the order of stacking
@@ -95,7 +95,7 @@ class TestCumulativeFlowVisual:
         assert data[-1].name == "To Do"
 
         # test first value is never None
-        for lines in data:
+        for lines in data:  # type: ignore
             assert lines.x[0] is not None
 
     def test_cumulative_flow_update_multiple_statuses(self, mocker):
@@ -155,7 +155,7 @@ class TestCumulativeFlowVisual:
         assert len(data) == 4
 
         # test we're not getting multiple data per day
-        for lines in data:
+        for lines in data:  # type: ignore
             assert len(lines.y) == len(lines.x)
 
         # test done is first, to-do is last for the order of stacking
@@ -163,5 +163,5 @@ class TestCumulativeFlowVisual:
         assert data[-1].name == "To Do"
 
         # test first value is never None
-        for lines in data:
+        for lines in data:  # type: ignore
             assert lines.x[0] is not None

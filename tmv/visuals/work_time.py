@@ -1,6 +1,6 @@
 import logging
 from datetime import date, datetime, timedelta
-from typing import List, Optional, Union
+from typing import List, Optional, Union, Tuple
 
 import dash_core_components as dcc
 import pandas as pd
@@ -152,7 +152,9 @@ class OvertimeChartController(VisualController):
         )
 
         data.reset_index(inplace=True)
-        data.sort_values(by=["team_name", "measurement_date"], inplace=True)
+        data.sort_values(
+            by=["team_name", "measurement_date"], inplace=True
+        )  # TODO: Bump to pandas 1.0 #34
         data["label"] = data.apply(
             lambda x: "%s %s"
             % (
@@ -170,7 +172,7 @@ class OvertimeChartController(VisualController):
         selected_start_date: Union[date, datetime, str],
         selected_end_date: Union[date, datetime, str],
         selected_teams: Optional[List[int]] = None,
-    ) -> (List, go.Layout):
+    ) -> Tuple[List, go.Layout]:
         """
         Return traces (bars) and layout of overtime chart for the month in
             `selected_date`, showing the teams in `selected_teams`.

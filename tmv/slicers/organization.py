@@ -1,5 +1,5 @@
 import logging
-from typing import List, Optional
+from typing import List, Optional, Union
 from flask_security import current_user
 from database import db
 
@@ -16,9 +16,13 @@ from slicers.state import callback_slicer_state_saving, load_slicer_value
 #: ID to use for the option "all items in a dropdown-picker. E.g.: All departments.
 ALL_ITEMS_OPTION_ID = -1
 
+IntOrList = Union[List[int], int]
+
 
 def team_picker(
-    selected_teams: Optional = None, html_element_id="teamPicker", multi: bool = True
+    selected_teams: Optional[IntOrList] = None,
+    html_element_id="teamPicker",
+    multi: bool = True,
 ) -> List:
     """
     Returns controls for filtering  by teams.
@@ -138,7 +142,7 @@ def department_and_team_picker(
 
 
 def sprint_picker(
-    filter_sprints: Optional = None, html_element_id: str = "sprintPicker"
+    filter_sprints: Optional[List] = None, html_element_id: str = "sprintPicker"
 ) -> List:
     """
     Returns controls for filtering by sprints
@@ -200,7 +204,7 @@ def team_and_sprint_picker(
     ]
 
 
-def project_picker(filter_projects: Optional = None) -> List:
+def project_picker(filter_projects: Optional[List] = None) -> List:
     """
     Returns controls for filtering  by projects.
     """

@@ -12,7 +12,7 @@ def create_default_status_mappings(status_mapping_dict: dict):
             status_category = StatusCategory(status_category_str)
         except ValueError:
             current_app.logger.error(
-                f"Unable to map status `{status}` to status category `{status_category}`: Invalid status category value"
+                f"Unable to map status `{status}` to status category `{status_category_str}`: Invalid status category value"
             )
             unmapped_statuses.append(status)
             continue

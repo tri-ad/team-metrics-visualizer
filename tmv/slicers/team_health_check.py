@@ -1,4 +1,4 @@
-from typing import Optional, Tuple, List
+from typing import Optional, Tuple, List, Any
 import pandas as pd
 import plotly.graph_objects as go
 from dash.dependencies import Input, Output
@@ -26,9 +26,9 @@ def callback_update_thc_visuals_by_teams_and_sessions(
     team_picker_id: str,
     session_picker_id: str,
     session_picker_compare_id: str,
-    thc_table: Optional = None,  # THCResultTableController
+    thc_table: Optional[Any] = None,  # THCResultTableController
     thc_graph_id: str = "",
-    thc_graph: Optional = None,  # THCTrendGraphController
+    thc_graph: Optional[Any] = None,  # THCTrendGraphController
 ):
     # Configure outputs based on which visuals are in the dashboard
     outputs = []

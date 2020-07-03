@@ -1,7 +1,7 @@
 import logging
 from abc import ABC, abstractmethod
 from datetime import datetime
-from typing import List
+from typing import List, Tuple
 
 import plotly.graph_objects as go
 from dateutil import rrule
@@ -112,7 +112,7 @@ class SprintVisualController(VisualController):
             result = sync_sprint_issues.delay(sprint.sprint_id, latest_only)
             result.get()
 
-    def update(self, sprint_id) -> (List[go.Scatter], go.Layout):
+    def update(self, sprint_id) -> Tuple[List[go.Scatter], go.Layout]:
         activities_subq = (
             Activity.query.filter(Activity.team_id.in_(current_user.readable_team_ids))
             .with_entities(Activity.activity_id)

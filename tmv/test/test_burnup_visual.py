@@ -75,7 +75,7 @@ class TestBurnupVisual:
 
         bgc = BurnupGraphController()
         data, _ = bgc.update(sprint.sprint_id)
-        scope, work_done, ideal = data
+        scope, work_done, ideal = data  # type: ignore
 
         # test we're not getting multiple data per day
         assert len(work_done.y) == len(work_done.x)

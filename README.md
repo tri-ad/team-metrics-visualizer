@@ -55,3 +55,9 @@ Always make sure, that your database has the same revision as the ORM. To do so,
 ### 👩🏻‍💻 Contribution
 
 If you want to contribute to this tool, please have a look at `CONTRIBUTING.md`. 🙂
+
+### ☎️ How to contact
+
+In case you found a bug or a security issue, please [create a GitHub-issue](https://github.com/tri-ad/team-metrics-visualizer/issues/new), describing what led to the error. We will try to fix it as soon as possible.
+
+In case you have trouble using the tool or setting up the environment, please also create an issue and we will try to help you out or expand the documentation.

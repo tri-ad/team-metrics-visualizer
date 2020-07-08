@@ -154,7 +154,7 @@ We make use of [Sphinx](https://www.sphinx-doc.org/en/master/) for our documenta
 
 ### Building documentation
 
-You can build the documentation locally by executing `make html` in folder `docs`. Generated html files will be in `_build/`. The start-page of the documentation is `index.html`.
+You can build the documentation locally by executing `make html` in folder `docs`. Generated html files will be in `docs/_build/html/`. The start-page of the documentation is `index.html`.
 
 ## Database migrations
 

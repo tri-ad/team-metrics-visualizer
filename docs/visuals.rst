@@ -4,7 +4,7 @@ Visuals
 Visuals are the graphs and data tables that make up dashboards. You can reuse visuals 
 in multiple dashboards.  This is how a visual looks like:
 
-.. image:: _static/burnup_chart.png
+.. image:: _static/chart_burnup.png
    :width: 100%
    :alt: A burnup chart
 

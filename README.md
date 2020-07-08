@@ -4,16 +4,26 @@
 ![CI-Pipeline status](https://github.com/tri-ad/team-metrics-visualizer/workflows/Continuous%20Integration/badge.svg?branch=master)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
-Team Metrics Visualizer is a tool teams can use to gather data from various other tools and create helpful visualisations from it.
+Team Metrics Visualizer is a tool that teams can use to aggregate data from various sources and create helpful visualisations from it. It can be customized and extended to a team's context and needs.
 
-## Getting started
+This is how it looks like, with a dashboard showing worktime and results from Squad Health Check for a team:
 
-### Requirements
+![Dashboard with Squad Health Check and worktime](docs/_static/dashboard_overtime_shc_with_slicers_with_tabs_cutoff.png "Dashboard with Squad Health Check and worktime")
 
-* Python 3
-* Pipenv
-* Docker
-* npm
+See [available visuals](#available-visuals) for a list of all visuals currently included. In [supported data-sources](#Supported-data-sources) you can see what kind of data you can add.
+
+Team Metrics Visualizer is at a very early stage of development. Some APIs may change in the future and the tool still has a few rough edges. However, in [TRI-AD](https://www.tri-ad.global/), we use it every day and it is already useful to us. This is why we wanted to share it with the world at such an early time.
+
+## 🔰 Getting started
+
+### 📦 Requirements
+
+* [Python 3](https://www.python.org/)
+* [Pipenv](https://pipenv.pypa.io/en/latest/)
+* [Docker](https://www.docker.com/)
+* [npm](https://www.npmjs.com/)
+
+For convenient management of Python-versions, you can use [pyenv](https://github.com/pyenv/pyenv) together with [pipenv](https://pipenv.pypa.io/en/latest/) if you want, but it is not required.
 
 ### 🖥 Development environment setup
 
@@ -31,6 +41,10 @@ After cloning the repo, perform the following steps to create your development e
 1. Build custom components: ``pipenv run npm run build``.
 1. Switch back to app folder ``tmv``.
 1. Initialize database: ``pipenv run flask db upgrade head``.
+
+#### 📖 Documentation
+
+You can build the documentation by running `make html` in folder `docs`. The HTML-files will be in `docs/_build/html/`. We will upload the docs to a hosting service soon.
 
 ### 🚀 Launch for local development
 
@@ -61,3 +75,41 @@ If you want to contribute to this tool, please have a look at `CONTRIBUTING.md`.
 In case you found a bug or a security issue, please [create a GitHub-issue](https://github.com/tri-ad/team-metrics-visualizer/issues/new), describing what led to the error. We will try to fix it as soon as possible.
 
 In case you have trouble using the tool or setting up the environment, please also create an issue and we will try to help you out or expand the documentation.
+
+## Included functionality
+
+Here is a brief overview of the functionality currently included in Team Metrics Visualizer. Please refer to the documentation for more details.
+
+### Available visuals
+
+#### Burnup chart and Cumulative Flow Diagram
+
+![Burnup chart](docs/_static/chart_burnup.png "Burnup chart")
+
+![Cumulative Flow Diagram](docs/_static/chart_cfd.png "Cumulative Flow Diagram")
+
+#### Overtime chart
+
+![Overtime chart](docs/_static/chart_overtime_with_slicers.png "Overtime chart")
+
+#### Squad Health Check result
+
+![Squad Health Check result](docs/_static/chart_shc_with_slicers.png "Squad Health Check result")
+
+### Supported data sources
+
+#### Sprint progress
+
+* ✅ Synchronized with JIRA via JIRA's API
+* 🔜 Manual input
+
+#### Worktime
+
+* ✅ Import from spreadsheet
+* ✅ Manual input
+
+#### Squad Health Check
+
+* ✅ Manual input
+* ✅ Import from spreadsheet via command line
+* 🔜 Import from spreadsheet via UI

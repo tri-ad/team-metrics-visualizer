@@ -85,6 +85,13 @@ jobs:
 
       - name: Run all tests
         run: |
-          pipenv run pytest --cov-config=tmv/.coveragerc --cov=tmv tmv/test/
+          pipenv run pytest --cov-config=tmv/.coveragerc --cov=tmv tmv/test/ --cov-report=xml
         env:
           TESTING_SQLALCHEMY_DATABASE_URI: postgresql://postgres:test@127.0.0.1:5432/tmv_test
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v1
+        with:
+          file: ./coverage.xml
+          flags: unittests
+          fail_ci_if_error: false

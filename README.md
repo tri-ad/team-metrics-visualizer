@@ -33,7 +33,7 @@ After cloning the repo, perform the following steps to create your development e
 
 1. Install dependencies: ``pipenv sync --dev --python /path/to/your/python3.8``.
 1. Install pre-commit hooks: ``pipenv run pre-commit install``.
-1. Create ``.env``-file in folder ``tmv`` for configuration. You can find a ``sample.env`` with all required configuration variables in folder `docs`.
+1. Create ``.env``-file in folder ``tmv`` for configuration. You can find a ``sample.env`` with all required configuration variables in folder `docs`. Uncomment and change the attributes below `Configuration for tmv-docker-dev` for setting up the environment
 1. Switch to folder ``tmv-docker-dev``.
 1. Start database container for local development: ``./run_docker-compose.sh``.
 1. Switch to custom dash components folder ``tmv_dash_components``.
@@ -50,7 +50,7 @@ You can build the documentation by running `make html` in folder `docs`. The HTM
 
 1. Start database container by executing ``./run_docker-compose.sh`` in folder ``tmv-docker-dev``
 1. Start celery: ``pipenv run celery -A runcelery:celery worker -B --loglevel=info``. If you have trouble with this, check the FAQs in the documentation.
-1. Start app: ``pipenv run flask run``.
+1. Open a different shell window and start app from folder tmv: ``pipenv run flask run``.
 
 App is reachable at <http://127.0.0.1:8050/>.
 

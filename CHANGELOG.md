@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Changed build: Pandas bump to 1.0
 - Changed build: Excel-engine changed from xlrd to openpyxl
 - Changed build: npm bump from 6.14.4 to 6.14.6
+- Fixed: Activated link to mapping of JIRA-projects
 
 ## [0.1.2] - 2020-06-30
 

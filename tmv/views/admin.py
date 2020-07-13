@@ -155,6 +155,7 @@ class THCQuestionModelView(CheckSuperuserRoleMixin, ModelView):
 
 class ActivityModelView(CheckSuperuserRoleMixin, ModelView):
     column_searchable_list = ["activity_name"]
+    form_excluded_columns = ["sprints", "status_mappings"]
 
 
 # Measurements
@@ -549,6 +550,16 @@ admin.add_view(
 admin.add_view(
     TeamModelView(
         Team, db.session, name="Teams", category=CATEGORY_LABEL_REFERENCE_DATA
+    )
+)
+
+admin.add_view(
+    ActivityModelView(
+        Activity,
+        db.session,
+        category=CATEGORY_LABEL_REFERENCE_DATA,
+        name="Activities",
+        endpoint="team_activities",
     )
 )
 

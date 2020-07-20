@@ -4,6 +4,7 @@
 ![CI-Pipeline status](https://github.com/tri-ad/team-metrics-visualizer/workflows/Continuous%20Integration/badge.svg?branch=master)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 ![Code Coverage](https://codecov.io/gh/tri-ad/team-metrics-visualizer/branch/master/graphs/badge.svg?branch=master)
+
 Team Metrics Visualizer is a tool that teams can use to aggregate data from various sources and create helpful visualisations from it. It can be customized and extended to a team's context and needs.
 
 This is how it looks like, with a dashboard showing worktime and results from Squad Health Check for a team:

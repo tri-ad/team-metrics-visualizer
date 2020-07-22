@@ -49,7 +49,10 @@ def team_picker(
         if multi:
             selected_teams = [team_id for team_id, _ in teams]
         else:
-            selected_teams = teams[0].value
+            try:
+                selected_teams = teams[0].value
+            except IndexError:
+                selected_teams = None
 
     selected_teams = load_slicer_value(
         "team_picker",

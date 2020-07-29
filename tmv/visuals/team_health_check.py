@@ -88,7 +88,7 @@ class THCResultTableController(VisualController, _TeamHealthCheckVisualControlle
         filter_session = THCMeasurement.session_name.in_([session1, cmp_session])
 
         # Retrieve thc-result from database
-        thc_result = pd.read_sql(
+        sql_statement = (
             db.session.query(
                 THCMeasurement,
                 Team.team_id.label("team_id"),
@@ -107,9 +107,10 @@ class THCResultTableController(VisualController, _TeamHealthCheckVisualControlle
                     Team.team_id.in_(current_user.readable_team_ids),
                 ),
             )
-            .statement,
-            db.session.bind,
+            .statement
         )
+
+        thc_result = pd.read_sql_query(sql_statement, db.session.bind,)
 
         # If there are no entries in the database, return an empty dataframe.
         if thc_result.empty:

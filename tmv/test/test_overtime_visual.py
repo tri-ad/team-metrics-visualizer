@@ -1,6 +1,6 @@
 import pytest
-
 from database import db
+from test.mock_objects import UserMock
 
 from structure.measurements import OTMeasurement
 from structure.organization import Team
@@ -41,11 +41,6 @@ class TestOvertimeVisual:
                 )
             )
         db.session.commit()
-
-        class UserMock:
-            @property
-            def readable_team_ids(self):
-                return Team.query.with_entities(Team.team_id)
 
         mocker.patch("visuals.work_time.current_user", UserMock())
 

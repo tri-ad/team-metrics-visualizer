@@ -1,5 +1,6 @@
 import pytest
 from database import db
+from test.mock_objects import UserMock
 
 
 from structure.organization import Team
@@ -72,11 +73,6 @@ class TestCumulativeFlowVisual:
                 )
         db.session.commit()
 
-        class UserMock:
-            @property
-            def readable_team_ids(self):
-                return Team.query.with_entities(Team.team_id)
-
         mocker.patch("visuals.base.current_user", UserMock())
         mocker.patch("visuals.CumulativeFlowGraphController.check_for_data")
 
@@ -139,11 +135,6 @@ class TestCumulativeFlowVisual:
                     )
                 )
         db.session.commit()
-
-        class UserMock:
-            @property
-            def readable_team_ids(self):
-                return Team.query.with_entities(Team.team_id)
 
         mocker.patch("visuals.base.current_user", UserMock())
         mocker.patch("visuals.CumulativeFlowGraphController.check_for_data")

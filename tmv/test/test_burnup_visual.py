@@ -1,4 +1,5 @@
 import pytest
+from test.mock_objects import UserMock
 from database import db
 
 from structure.organization import Team
@@ -64,11 +65,6 @@ class TestBurnupVisual:
                     )
                 )
         db.session.commit()
-
-        class UserMock:
-            @property
-            def readable_team_ids(self):
-                return Team.query.with_entities(Team.team_id)
 
         mocker.patch("visuals.base.current_user", UserMock())
         mocker.patch("visuals.BurnupGraphController.check_for_data")

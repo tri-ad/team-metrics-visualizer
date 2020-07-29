@@ -520,7 +520,7 @@ class THCTrendGraphController(VisualController, _TeamHealthCheckVisualController
 
     def __load_data(self, team_id: int) -> pd.DataFrame:
         # TODO: Refactor this and avoid duplicated code with data table function
-        thc_result = pd.read_sql(
+        sql_statement = (
             db.session.query(
                 THCMeasurement,
                 THCQuestion.topic.label("topic"),
@@ -532,9 +532,9 @@ class THCTrendGraphController(VisualController, _TeamHealthCheckVisualController
             .filter(Team.team_id.in_(current_user.readable_team_ids))
             .filter(THCMeasurement.team_id == team_id)
             .order_by(THCMeasurement.measurement_date)
-            .statement,
-            db.session.bind,
+            .statement
         )
+        thc_result = pd.read_sql_query(sql_statement, db.session.bind,)
 
         if thc_result.empty or thc_result is None:
             return pd.DataFrame()

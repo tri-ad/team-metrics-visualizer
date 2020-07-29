@@ -7,6 +7,7 @@ from database import db
 from structure.organization import Team
 from structure.measurements import THCQuestion, THCMeasurement
 from visuals import THCResultTableController
+from visuals import THCTrendGraphController
 from visuals.team_health_check import column_id
 from test.mock_objects import UserMock
 
@@ -33,6 +34,14 @@ def thc_table(db_session, mocker):
 
     table = THCResultTableController()
     return table
+
+
+@pytest.fixture(scope="function")
+def thc_graph(db_session, mocker):
+    mocker.patch("visuals.team_health_check.current_user", UserMock())
+
+    graph = THCTrendGraphController()
+    return graph
 
 
 @pytest.fixture(scope="function")
@@ -132,6 +141,7 @@ def thc_data(db_session) -> Tuple[List[Team], List[THCQuestion], List[THCMeasure
     return teams, questions, measurements
 
 
+# Tests for Team Health Check table
 def test_thc_table_initialized(thc_table):
     assert thc_table is not None
     assert thc_table.draw() is not None
@@ -239,3 +249,40 @@ def test_no_data_gives_empty_default_selection(thc_table):
     assert len(teams) == 0
     assert session == ""
     assert compare == ""
+
+
+# Tests for Team Health Check graph
+def test_thc_graph_initialized(thc_graph):
+    assert thc_graph is not None
+    assert thc_graph.draw() is not None
+
+
+def test_thc_graph_shows_correct_result(thc_data, thc_graph):
+    teams, _, _ = thc_data
+    team_id = teams[0].team_id
+
+    # source:target
+    correct_links = {2: 4, 0: 3, 4: 7, 3: 6}
+    target_without_source = 6
+
+    assert thc_graph is not None
+    nodes, links, error = thc_graph.update_nodes_and_links(team_id=team_id)
+
+    assert len(nodes["label"]) == 3 * 3
+    assert len(nodes["color"]) == 3 * 3
+
+    assert len(links) == 5
+    sources = links["source"]
+    targets = links["target"]
+
+    for s, t in zip(sources, targets):
+        assert t == correct_links[s]
+    assert targets[-1] == target_without_source
+
+    assert error is None
+
+
+def test_no_data_shows_message(thc_graph):
+    assert thc_graph is not None
+    _, _, error = thc_graph.update_nodes_and_links(team_id=0)
+    assert error != ""

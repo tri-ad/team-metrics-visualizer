@@ -15,6 +15,7 @@ class TestOTImporter:
         TEST_RESOURCES_DIRECTORY / "overtime_test_data_strange_sheet_name.xlsx"
     )
     TEST_FILE_WRONG_FORMAT = TEST_RESOURCES_DIRECTORY / "overtime_WrongFormat.xlsx"
+    TEST_FILE_NO_EXT = TEST_RESOURCES_DIRECTORY / "overtime_test_data_noext"
 
     def add_teams(self):
         department = Team(parent_team=None, name="Department", code="Dptmnt")
@@ -125,3 +126,13 @@ class TestOTImporter:
         result = db.session.query(OTMeasurement).all()
         assert result[0].overtime == timedelta(hours=-13, minutes=-15)
         assert result[1].overtime == timedelta(hours=25, minutes=4)
+
+    def test_import_file_with_no_extension(self):
+        self.add_teams()
+
+        importer = action_process_overtime_data(
+            TestOTImporter.TEST_FILE_NO_EXT, output=print
+        )
+        action_commit_overtime_data(importer, output=print)
+
+        assert db.session.query(OTMeasurement).count() > 0

@@ -1,11 +1,13 @@
 import logging
-from typing import Optional, Callable, Dict
+from typing import Optional, Callable, Dict, Union, IO
 from abc import ABC, abstractmethod
 import pandas as pd
 from enum import Enum, auto
 import os.path
 from database import db
 from structure.organization import Team
+
+FileOrNameType = Union[str, IO]
 
 
 class ImporterFileType(Enum):
@@ -51,7 +53,10 @@ class FileImporter(ABC):
     """
 
     def __init__(
-        self, file_name: str, file_type: Optional[ImporterFileType] = None, **kwargs
+        self,
+        file: FileOrNameType,
+        file_type: Optional[ImporterFileType] = None,
+        **kwargs,
     ):
         # Make sure kwargs is a dict
         if not kwargs:
@@ -75,7 +80,7 @@ class FileImporter(ABC):
 
         # If file type is not given, try to infer from suffix
         if file_type is None:
-            _, ext = os.path.splitext(file_name)
+            _, ext = os.path.splitext(file)
             ext = ext.lower()
             if ext == ".xlsx" or ext == ".xls":
                 file_type = ImporterFileType.Excel
@@ -86,9 +91,9 @@ class FileImporter(ABC):
 
         # Read the file into a pandas dataframe
         if file_type == ImporterFileType.Excel:
-            self.__read_file(file_name, pd.read_excel, **kwargs)
+            self.__read_file(file, pd.read_excel, **kwargs)
         elif file_type == ImporterFileType.CSV:
-            self.__read_file(file_name, pd.read_csv, **kwargs)
+            self.__read_file(file, pd.read_csv, **kwargs)
         else:
             logging.warning(f"File type {file_type.name} is not supported.")
 

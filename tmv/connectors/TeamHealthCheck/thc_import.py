@@ -8,8 +8,8 @@ from structure.measurements import THCQuestion, THCMeasurement
 
 
 class THCImporter(FileImporter):
-    def __init__(self, file_name):
-        super().__init__(file_name, sheet_name=0, header=0, index_col=(0, 1, 2))
+    def __init__(self, file):
+        super().__init__(file, sheet_name=0, header=0, index_col=(0, 1, 2))
 
         # Stores questions by topic
         self._q_topics = None

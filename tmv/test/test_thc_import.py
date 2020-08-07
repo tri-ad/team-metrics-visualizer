@@ -59,7 +59,7 @@ class TestTHCImport:
         self.add_teams()
 
         # Import result and check that everything was added to the db
-        importer = THCImporter(file_name=TestTHCImport.TEST_FILE_THC_NICE)
+        importer = THCImporter(file=TestTHCImport.TEST_FILE_THC_NICE)
         assert importer is not None
         importer.process()
         importer.commit()
@@ -109,7 +109,7 @@ class TestTHCImport:
         self.import_questions()
         self.add_teams()
 
-        importer = THCImporter(file_name=TestTHCImport.TEST_FILE_THC_UNKNOWN_QUESTION,)
+        importer = THCImporter(file=TestTHCImport.TEST_FILE_THC_UNKNOWN_QUESTION,)
         assert importer is not None
         importer.process()
         importer.commit()
@@ -128,7 +128,7 @@ class TestTHCImport:
         self.add_teams()
 
         importer = THCImporter(
-            file_name=TestTHCImport.TEST_FILE_THC_NO_ANSWER_ON_ONE_QUESTION,
+            file=TestTHCImport.TEST_FILE_THC_NO_ANSWER_ON_ONE_QUESTION,
         )
         assert importer is not None
         importer.process()

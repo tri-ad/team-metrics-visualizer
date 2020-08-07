@@ -16,7 +16,7 @@ COL_OVERTIME = "Overtime"
 
 
 class OTImporter(FileImporter):
-    def __init__(self, file_name):
+    def __init__(self, file):
         # The period being processed. Parsed date from sheet_name.
         self.period = ""
         # Format for period_id
@@ -32,7 +32,7 @@ class OTImporter(FileImporter):
         self.periods_affected = set()
 
         super().__init__(
-            file_name,
+            file,
             file_type=ImporterFileType.Excel,
             sheet_name=None,  # Read all sheets
             header=0,

@@ -137,7 +137,8 @@ def action_process_overtime_data(
     with db.session.no_autoflush:  # for showing .status()
         output(f"Reading Overtime data from file {from_file}...")
         db.session.flush()
-        importer = importer_class(file_name=from_file)
+        with open(from_file, "rb") as fp:
+            importer = importer_class(file=fp)
         importer.process()
 
         if show_status:
@@ -180,7 +181,7 @@ def action_process_thc(
     with db.session.no_autoflush:  # for showing .status()
         output(f"Reading team-health-check-data from file {from_file}...")
         db.session.flush()
-        importer = THCImporter(file_name=from_file)
+        importer = THCImporter(file=from_file)
         importer.process()
 
         if show_status:

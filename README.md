@@ -1,9 +1,9 @@
 # Team Metrics Visualizer
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-![CI-Pipeline status](https://github.com/tri-ad/team-metrics-visualizer/workflows/Continuous%20Integration/badge.svg?branch=master)
+[![CI-Pipeline status](https://github.com/tri-ad/team-metrics-visualizer/workflows/Continuous%20Integration/badge.svg?branch=master)](https://github.com/tri-ad/team-metrics-visualizer/actions?query=branch%3Amaster)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-![Code Coverage](https://codecov.io/gh/tri-ad/team-metrics-visualizer/branch/master/graphs/badge.svg?branch=master)
+[![Code Coverage](https://codecov.io/gh/tri-ad/team-metrics-visualizer/branch/master/graphs/badge.svg?branch=master)](https://codecov.io/gh/tri-ad/team-metrics-visualizer)
 
 Team Metrics Visualizer is a tool that teams can use to aggregate data from various sources and create helpful visualisations from it. It can be customized and extended to a team's context and needs.
 
